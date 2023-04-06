@@ -1,4 +1,4 @@
-﻿using GeneradorAleatorio.CapaMedia;
+﻿
 using GeneradorAleatorio.Pantallas;
 using System;
 using System.Collections.Generic;

@@ -64,6 +64,12 @@
     <Compile Include="Pantallas\GeneradorNormal.Designer.cs">
       <DependentUpon>GeneradorNormal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pantallas\GeneradorPoisson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\GeneradorPoisson.Designer.cs">
+      <DependentUpon>GeneradorPoisson.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pantallas\PantallaSeleccionModo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\GeneradorNormal.resx">
       <DependentUpon>GeneradorNormal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\GeneradorPoisson.resx">
+      <DependentUpon>GeneradorPoisson.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\PantallaSeleccionModo.resx">
       <DependentUpon>PantallaSeleccionModo.cs</DependentUpon>

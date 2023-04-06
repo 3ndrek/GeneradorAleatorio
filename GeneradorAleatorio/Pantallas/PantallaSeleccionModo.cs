@@ -36,7 +36,14 @@ namespace GeneradorAleatorio.Pantallas
 
         private void BtnPoisson_Click(object sender, EventArgs e)
         {
-            
+            var pantalla = new GeneradorPoisson(this);
+            pantalla.Show();
+            this.Hide();
+        }
+
+        private void PantallaSeleccionModo_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

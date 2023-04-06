@@ -38,20 +38,23 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(521, 80);
+            this.label1.Location = new System.Drawing.Point(552, 22);
             this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(217, 46);
+            this.label1.Size = new System.Drawing.Size(148, 31);
             this.label1.TabIndex = 0;
             this.label1.Text = "Bienvenido";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(307, 173);
+            this.label2.Location = new System.Drawing.Point(406, 150);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(654, 46);
+            this.label2.Size = new System.Drawing.Size(442, 31);
             this.label2.TabIndex = 1;
             this.label2.Text = "Seleccione la distribución a generar";
             // 
@@ -96,9 +99,9 @@
             // 
             // PantallaSeleccionModo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(23F, 46F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1197, 448);
+            this.ClientSize = new System.Drawing.Size(1219, 448);
             this.Controls.Add(this.BtnExp);
             this.Controls.Add(this.BtnPoisson);
             this.Controls.Add(this.BtnNormal);
@@ -109,6 +112,7 @@
             this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Name = "PantallaSeleccionModo";
             this.Text = "PantallaSelecciónModo";
+            this.Load += new System.EventHandler(this.PantallaSeleccionModo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
