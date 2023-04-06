@@ -82,13 +82,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(540, 302);
+            this.ClientSize = new System.Drawing.Size(544, 301);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CmbModo);
             this.Controls.Add(this.BtnGenerar);
             this.Name = "GeneradorPoisson";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GeneradorPoisson";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GeneradorPoisson_FormClosing);
             this.ResumeLayout(false);

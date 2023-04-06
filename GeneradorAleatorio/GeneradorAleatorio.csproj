@@ -58,6 +58,12 @@
     <Compile Include="Pantallas\GeneadorUniforme.Designer.cs">
       <DependentUpon>GeneadorUniforme.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pantallas\GeneradorExponencial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\GeneradorExponencial.Designer.cs">
+      <DependentUpon>GeneradorExponencial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pantallas\GeneradorNormal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Pantallas\GeneadorUniforme.resx">
       <DependentUpon>GeneadorUniforme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\GeneradorExponencial.resx">
+      <DependentUpon>GeneradorExponencial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\GeneradorNormal.resx">
       <DependentUpon>GeneradorNormal.cs</DependentUpon>

@@ -45,5 +45,12 @@ namespace GeneradorAleatorio.Pantallas
         {
 
         }
+
+        private void BtnExp_Click(object sender, EventArgs e)
+        {
+            var pantalla = new GeneradorExponencial(this);
+            pantalla.Show();
+            this.Hide();
+        }
     }
 }

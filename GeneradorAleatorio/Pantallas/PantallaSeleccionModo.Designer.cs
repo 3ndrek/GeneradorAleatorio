@@ -52,6 +52,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.label2.Location = new System.Drawing.Point(406, 150);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(442, 31);
@@ -96,6 +97,7 @@
             this.BtnExp.TabIndex = 5;
             this.BtnExp.Text = "Exponencial";
             this.BtnExp.UseVisualStyleBackColor = true;
+            this.BtnExp.Click += new System.EventHandler(this.BtnExp_Click);
             // 
             // PantallaSeleccionModo
             // 
@@ -111,6 +113,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Name = "PantallaSeleccionModo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PantallaSelecciónModo";
             this.Load += new System.EventHandler(this.PantallaSeleccionModo_Load);
             this.ResumeLayout(false);
