@@ -46,12 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contador\Contar.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gestor\GestorDeCalculos.cs" />
     <Compile Include="Pantallas\GeneadorUniforme.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +78,12 @@
     <Compile Include="Pantallas\GeneradorPoisson.Designer.cs">
       <DependentUpon>GeneradorPoisson.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pantallas\PantallaResultados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\PantallaResultados.Designer.cs">
+      <DependentUpon>PantallaResultados.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pantallas\PantallaSeleccionModo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\GeneradorPoisson.resx">
       <DependentUpon>GeneradorPoisson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\PantallaResultados.resx">
+      <DependentUpon>PantallaResultados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\PantallaSeleccionModo.resx">
       <DependentUpon>PantallaSeleccionModo.cs</DependentUpon>
