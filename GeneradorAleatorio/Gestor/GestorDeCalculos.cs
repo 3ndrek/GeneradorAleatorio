@@ -13,45 +13,138 @@ namespace GeneradorAleatorio.Gestor
     {
         public List<Double> NumerosGenerados;
         public int modoSeleccionado;
-        private int intervalos; 
+
+        private int intervalos;
 
 
+        //solo para uniforme 
+        private int limInf;
+        private int limSup;
+
+
+        // solución para pasar la matriz contada a la pantalla 
+        private double[,] contadas;
+
+
+
+
+        
         public GestorDeCalculos(List<Double> doubles, int modo ) 
         {
             NumerosGenerados= doubles;
             modoSeleccionado = modo;
 
 
+            // carga la pantalla 
             PantallaResultados pantallaResultados = new PantallaResultados(NumerosGenerados, this);
+
+
             pantallaResultados.Show();
 
         }
 
+
+        // la pantalla llama a este punto, setea la cantidad de intervalos 
         public void asignarIntervalos(int intervalo)
         {
             intervalos = intervalo;
-            var contador = new Contar();
 
-            var matriz = contador.contarEntreIntervalos(NumerosGenerados,intervalos);
+            var prueba = PasaPrueba(NumerosGenerados, modoSeleccionado); // devuelve el valor de chi
+
+            generarPantallaHistograma(contadas);
 
         }
 
 
 
-
-
-
-
-        private int PasaPrueba(List<double> numerosGenerados, int modoSeleccionado)
+        // esto es solo para la uniforme, no creo que les haga falta setear los intervalos en sí 
+        public void SetIntervalos(int sup, int inf)
         {
+            limSup = sup;
+            limInf = inf;
+
+        }
+
+
+        /// modo seleccionado proviene desde el generador, se le pasa que se va calcular 1= unif, 2= normal, 3 = exp, 4= poisson
+        private double PasaPrueba(List<double> numerosGenerados, int modoSeleccionado)
+        {
+            double chiCalculado = 0;
             // uniforme 
+
             if (modoSeleccionado==1 )
             {
+                var contador = new Contar();
+
+                var matriz = contador.ContarEntreIntervalosParaUniforme(NumerosGenerados, intervalos,limInf,limSup );
                 
+                //asigno a la global para darle visibilidad a la pantalla 
+
+                double[,] freqEsperada = new double[matriz.GetLength(0), 4];
+                contadas = freqEsperada;
+
+                //calcular probabilidad del intervalo 
+
+                double prob = (matriz[0,1]- limInf)/(limSup-limInf);
+
+                double acumulador = 0; 
+
+            for (int i = 0; i < intervalos; i++)
+            { 
+                // selecciona columnas 
+                for (int j = 0; j < 4; j++)
+                {
+                        //
+                    if (j == 0 || j==1 )
+                    {
+                            freqEsperada[i, j] = matriz[i, j];
+                    }
+                    /// freq observada 
+                    if (j == 2)
+                    {
+                            freqEsperada[i,j] = matriz[i,j];
+                            acumulador += matriz[i,j];
+                    }
+                }
             }
+            for (int i = 0; i < intervalos; i++)
+                {
+                    // selecciona columnas 
+                    for (int j = 0; j < 4; j++)
+                    {
+                        if (j==3)
+                        {
+                            freqEsperada[i, j] = acumulador * prob;
+                        }
+                    }
+                }
 
+                var matrizChi = contador.PruebaChi(freqEsperada);
 
-            return  0;
+                for (int i = 0; i < matrizChi.GetLength(0); i++)
+                {
+
+                    for (int j = 0; j < 6; j++)
+                    {
+
+                        if (j == 4) 
+                        {
+                            chiCalculado += matrizChi[i, j];
+                        }
+                    }
+                }
+            }
+            return  chiCalculado;
         }
+
+
+        public void generarPantallaHistograma(double[,] freqEsperada)
+        {
+            var pant = new PantallaHistogramaChi(freqEsperada);
+            pant.ShowDialog();
+        }
+
+
+
     }
 }

@@ -50,5 +50,8 @@ namespace GeneradorAleatorio.Pantallas
 
         }
 
+
+
+        // estaría para desde acá generar un archivo csv, o desde acá o desde la de chi 
     }
 }

@@ -40,13 +40,13 @@
             this.DvgArreglo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DvgArreglo.Location = new System.Drawing.Point(27, 32);
             this.DvgArreglo.Name = "DvgArreglo";
-            this.DvgArreglo.Size = new System.Drawing.Size(240, 652);
+            this.DvgArreglo.Size = new System.Drawing.Size(240, 627);
             this.DvgArreglo.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(317, 44);
+            this.label1.Location = new System.Drawing.Point(341, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(165, 13);
             this.label1.TabIndex = 1;
@@ -54,14 +54,14 @@
             // 
             // TxtIntervalos
             // 
-            this.TxtIntervalos.Location = new System.Drawing.Point(320, 76);
+            this.TxtIntervalos.Location = new System.Drawing.Point(344, 78);
             this.TxtIntervalos.Name = "TxtIntervalos";
             this.TxtIntervalos.Size = new System.Drawing.Size(177, 20);
             this.TxtIntervalos.TabIndex = 2;
             // 
             // BtnGenerar
             // 
-            this.BtnGenerar.Location = new System.Drawing.Point(320, 124);
+            this.BtnGenerar.Location = new System.Drawing.Point(391, 116);
             this.BtnGenerar.Name = "BtnGenerar";
             this.BtnGenerar.Size = new System.Drawing.Size(75, 23);
             this.BtnGenerar.TabIndex = 3;
@@ -73,7 +73,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 696);
+            this.ClientSize = new System.Drawing.Size(811, 671);
             this.Controls.Add(this.BtnGenerar);
             this.Controls.Add(this.TxtIntervalos);
             this.Controls.Add(this.label1);

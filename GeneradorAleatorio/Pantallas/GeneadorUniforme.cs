@@ -35,10 +35,16 @@ namespace GeneradorAleatorio.Pantallas
 
         private void BtnGenerar_Click(object sender, EventArgs e)
         {
-
             var numeros = generarNumeros();
-            gestorDeCalculos = new GestorDeCalculos(numeros,1);
 
+
+
+            // Se crea el generador de cálculos 
+            gestorDeCalculos = new GestorDeCalculos(numeros,1); // el número que aparece es el modo, sirve para diferenciar en el cálculo de chi 
+
+            int Superior = Int32.Parse(LimSup.Text);
+            int Inferior = Int32.Parse(LimInf.Text);
+            gestorDeCalculos.SetIntervalos(Superior,Inferior);
         }
 
         private List<Double> generarNumeros()

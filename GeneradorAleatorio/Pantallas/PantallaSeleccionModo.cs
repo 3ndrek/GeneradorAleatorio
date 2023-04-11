@@ -21,6 +21,8 @@ namespace GeneradorAleatorio.Pantallas
 
         private void BtnUniforme_Click(object sender, EventArgs e)
         {
+
+            // en primer lugar se selecciona el modo y salta a la pantalla del generador para pedir los datos 
            var pantalla = new GeneadorUniforme(this);
             
            pantalla.Show();
