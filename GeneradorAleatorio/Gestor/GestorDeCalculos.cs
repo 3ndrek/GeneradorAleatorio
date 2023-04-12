@@ -134,6 +134,23 @@ namespace GeneradorAleatorio.Gestor
                     }
                 }
             }
+            if (modoSeleccionado == 4)
+            {
+                var contador = new Contar();
+
+                var matriz = contador.contarEntreIntervalos(NumerosGenerados, intervalos);
+
+                //asigno a la global para darle visibilidad a la pantalla 
+
+                double[,] freqEsperada = new double[matriz.GetLength(0), 4];
+                contadas = freqEsperada;
+
+                //calcular probabilidad del intervalo 
+
+                double prob = (matriz[0, 1] - limInf) / (limSup - limInf);
+
+                double acumulador = 0;
+            }
             return  chiCalculado;
         }
 
