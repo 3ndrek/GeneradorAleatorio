@@ -49,7 +49,13 @@ namespace GeneradorAleatorio.Pantallas
         private void btnGenerar_Click(object sender, EventArgs e)
         {
             List<double> numeros = GenerarRNDExponencial();
-            gestorDeCalculos = new GestorDeCalculos(numeros, 4);
+            gestorDeCalculos = new GestorDeCalculos(numeros, 3, media);
+        }
+
+        public double calcularLambda()
+        {
+            double lambda = 1 / media;
+            return lambda;
         }
     }
 }

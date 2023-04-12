@@ -25,14 +25,14 @@ namespace GeneradorAleatorio.Gestor
         // solución para pasar la matriz contada a la pantalla 
         private double[,] contadas;
 
-
-
-
+        //solo para exponencial
+        private double mediaE;
         
-        public GestorDeCalculos(List<Double> doubles, int modo ) 
+        public GestorDeCalculos(List<Double> doubles, int modo, double media) 
         {
             NumerosGenerados= doubles;
             modoSeleccionado = modo;
+            mediaE = media;
 
 
             // carga la pantalla 
@@ -134,22 +134,34 @@ namespace GeneradorAleatorio.Gestor
                     }
                 }
             }
-            if (modoSeleccionado == 4)
+            if (modoSeleccionado == 3)
             {
                 var contador = new Contar();
 
                 var matriz = contador.contarEntreIntervalos(NumerosGenerados, intervalos);
 
-                //asigno a la global para darle visibilidad a la pantalla 
+                double[,] matrizCompleta = new double[matriz.GetLength(0), 5];
 
-                double[,] freqEsperada = new double[matriz.GetLength(0), 4];
-                contadas = freqEsperada;
+                //recorremos filas de la matriz
+                for (int i = 0; i < matriz.GetLength(0); i++)
+                {
+                    //recorremos columnas de la matriz
+                    for(int j = 0; j < 4; j++)
+                    {
+                        double prob = (1 - Math.Exp(-(1 / mediaE) * matriz[i,1]))- (1 - Math.Exp(-(1 / mediaE) * matriz[i, 0]));
 
-                //calcular probabilidad del intervalo 
+                        if (j == 0 || j == 1)
+                        {
+                            matrizCompleta[i, j] = matriz[i, j];
+                        }
+                        /// freq observada 
+                        if (j == 2)
+                        {
+                            matrizCompleta[i, j] = matriz[i, j];
+                        }
+                    }
+                }
 
-                double prob = (matriz[0, 1] - limInf) / (limSup - limInf);
-
-                double acumulador = 0;
             }
             return  chiCalculado;
         }
