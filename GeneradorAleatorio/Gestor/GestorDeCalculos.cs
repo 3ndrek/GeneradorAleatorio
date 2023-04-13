@@ -140,13 +140,13 @@ namespace GeneradorAleatorio.Gestor
 
                 var matriz = contador.contarEntreIntervalos(NumerosGenerados, intervalos);
 
-                double[,] matrizCompleta = new double[matriz.GetLength(0), 5];
+                double[,] matrizCompleta = new double[matriz.GetLength(0), 4];
 
                 //recorremos filas de la matriz
                 for (int i = 0; i < matriz.GetLength(0); i++)
                 {
                     //recorremos columnas de la matriz
-                    for(int j = 0; j < 5; j++)
+                    for(int j = 0; j < 4; j++)
                     {
                         double prob = (1 - Math.Exp(-(1 / mediaE) * matriz[i,1]))- (1 - Math.Exp(-(1 / mediaE) * matriz[i, 0]));
 
@@ -160,10 +160,6 @@ namespace GeneradorAleatorio.Gestor
                             matrizCompleta[i, j] = matriz[i, j];
                         }
                         if (j == 3)
-                        {
-                            matrizCompleta[i, j] = prob;
-                        }
-                        if (j == 4)
                         {
                             matrizCompleta[i, j] = prob * (numerosGenerados.Count);
                         }

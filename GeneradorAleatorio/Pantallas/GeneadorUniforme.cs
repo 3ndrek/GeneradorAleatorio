@@ -40,7 +40,7 @@ namespace GeneradorAleatorio.Pantallas
 
 
             // Se crea el generador de cálculos 
-            gestorDeCalculos = new GestorDeCalculos(numeros,1); // el número que aparece es el modo, sirve para diferenciar en el cálculo de chi 
+            gestorDeCalculos = new GestorDeCalculos(numeros,1,0); // el número que aparece es el modo, sirve para diferenciar en el cálculo de chi 
 
             int Superior = Int32.Parse(LimSup.Text);
             int Inferior = Int32.Parse(LimInf.Text);
