@@ -11,9 +11,12 @@ namespace GeneradorAleatorio.Contador
         private int ContarValoresEnIntervalo(List<Double> numeros, double min, double max)
         {
             int contador = 0;
+
+            double valorMax = numeros.Max();
+
             foreach (double numero in numeros)
             {
-                if (numero >= min && numero < max) // creo que toma bien el {) intervalo 
+                if ((numero >= min && numero < max) || (numero >= min && numero == valorMax)) // creo que toma bien el {) intervalo 
                 {
                     contador++;
                 }

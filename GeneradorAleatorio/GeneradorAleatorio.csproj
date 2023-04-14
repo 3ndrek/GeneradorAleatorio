@@ -69,6 +69,9 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Gestor\GestorDeCalculos.cs" />
+    <Compile Include="Helpers\Distribucion Normal\ChiCuadrado.cs" />
+    <Compile Include="Helpers\Distribucion Normal\Convolucion.cs" />
+    <Compile Include="Helpers\Distribucion Normal\Box-Muller.cs" />
     <Compile Include="Pantallas\GeneadorUniforme.cs">
       <SubType>Form</SubType>
     </Compile>
