@@ -32,7 +32,7 @@ namespace GeneradorAleatorio.Contador
             double limIntervalo = minimo;
 
 
-            double ancho = (maximo - minimo) / intervalos;
+            double ancho = ((maximo - minimo) / intervalos)+ 0.0001 ;
             double[,] retorno = new double[intervalos, 3];
             // selecciona fila 
 
