@@ -11,7 +11,6 @@ namespace GeneradorAleatorio.Contador
         private int ContarValoresEnIntervalo(List<Double> numeros, double min, double max)
         {
             int contador = 0;
-
             double valorMax = numeros.Max();
 
             foreach (double numero in numeros)
@@ -33,7 +32,7 @@ namespace GeneradorAleatorio.Contador
             double limIntervalo = minimo;
 
 
-            double ancho = (maximo - minimo) / intervalos;
+            double ancho = ((maximo - minimo) / intervalos)+ 0.0001 ;
             double[,] retorno = new double[intervalos, 3];
             // selecciona fila 
 

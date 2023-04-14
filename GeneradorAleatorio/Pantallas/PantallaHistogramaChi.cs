@@ -1,4 +1,5 @@
 ﻿
+using LiveCharts.Wpf.Charts.Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using System.Windows.Media;
+
 
 namespace GeneradorAleatorio.Pantallas
 {
@@ -42,48 +43,74 @@ namespace GeneradorAleatorio.Pantallas
 
         private void PantallaHistogramaChi_Load(object sender, EventArgs e)
         {
-           /// primero obtengo los intervalos 
-           
-            var intervalos = new List<Double>();
-            var freq = new List<Double>();
-            for (int i = 0;  i< frecuencia0.GetLength(0) ;i ++)
+            Histograma1.Series.Add("Frecuencia Observada");
+            Histograma1.Series["Frecuencia Observada"].ChartType = SeriesChartType.Column;
+
+            // Obtener los datos de los intervalos superiores, inferiores y frecuencia observada
+            int filas = frecuencia0.GetLength(0);
+            double[] intervalosSuperiores = new double[filas]; 
+            double[] intervalosInferiores = new double[filas];
+            double[] frecuenciaObservada = new double[filas];
+
+            for (int i = 0; i < filas; i++)
             {
-                for (int j = 0; j < 5; j++)
+                for (int j = 0; j < 4; j++)
                 {
-                    if (j==0)
+                    if (j == 0)
                     {
-                            intervalos.Add(frecuencia0[i, j]);
- 
-
-                    }
-                    if (j== 2)
-                    {
-                        freq.Add(frecuencia0[i, j]);
+                        intervalosInferiores[i]=frecuencia0[i,j];
                     }
 
+                    if (j == 1)
+                    {
+                        intervalosSuperiores[i] = frecuencia0[i, j];
+                    }
+
+                    if (j == 2)
+                    {
+                        frecuenciaObservada[i] = frecuencia0[i, j];
+                    }
                 }
             }
 
-            Histograma1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.BrightPastel;
-
-            Histograma1.Titles.Add("Histograma de los valores generados");
-
-            for (int i = 0; i < intervalos.Count ; i++)
+            // Agregar los puntos a la serie del Chart
+            for (int i = 0; i < intervalosSuperiores.Length; i++)
             {
-                 
-                Series series = Histograma1.Series.Add( intervalos[i].ToString() );
-
-                series.Label = freq[i].ToString();
-
-                series.Points.Add(freq[i]);
+                double xValue = (intervalosSuperiores[i] + intervalosInferiores[i]) / 2.0;
+                double yValue = frecuenciaObservada[i];
+                Histograma1.Series["Frecuencia Observada"].Points.AddXY(xValue, yValue);
             }
 
+            // Asignar los nombres a los ejes X e Y del Chart
+            Histograma1.ChartAreas[0].AxisX.Title = "Intervalos";
+            Histograma1.ChartAreas[0].AxisY.Title = "Frecuencia Observada";
 
+            // Ajustar las propiedades de la serie y del Chart
+            Histograma1.Series["Frecuencia Observada"].Color = Color.Aqua;
+            Histograma1.Series["Frecuencia Observada"].BorderWidth = 6 ;
+            Histograma1.ChartAreas[0].AxisX.Interval = intervalosSuperiores[1] - intervalosInferiores[1];
+            Histograma1.ChartAreas[0].AxisX.Minimum = intervalosInferiores[0];
+            Histograma1.ChartAreas[0].AxisX.Maximum = intervalosSuperiores[intervalosSuperiores.Length - 1];
+            Histograma1.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.LightGray;
+            Histograma1.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.LightGray;
 
         }
-    }
 
+
+
+
+
+
+
+
+
+
+
+
+    }
 }
+
+
 
 
        

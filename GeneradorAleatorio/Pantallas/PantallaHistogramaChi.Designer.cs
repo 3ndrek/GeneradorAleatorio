@@ -32,11 +32,11 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.DataGVCHI = new System.Windows.Forms.DataGridView();
-            this.Histograma1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.LimInf = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LimSup = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FreqObs = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FreqEsp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Histograma1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.DataGVCHI)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Histograma1)).BeginInit();
             this.SuspendLayout();
@@ -49,27 +49,10 @@
             this.LimSup,
             this.FreqObs,
             this.FreqEsp});
-            this.DataGVCHI.Location = new System.Drawing.Point(93, 12);
+            this.DataGVCHI.Location = new System.Drawing.Point(216, 12);
             this.DataGVCHI.Name = "DataGVCHI";
             this.DataGVCHI.Size = new System.Drawing.Size(763, 265);
             this.DataGVCHI.TabIndex = 0;
-            // 
-            // Histograma1
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.Histograma1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.Histograma1.Legends.Add(legend1);
-            this.Histograma1.Location = new System.Drawing.Point(83, 299);
-            this.Histograma1.Name = "Histograma1";
-            this.Histograma1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.Histograma1.Series.Add(series1);
-            this.Histograma1.Size = new System.Drawing.Size(763, 365);
-            this.Histograma1.TabIndex = 1;
-            this.Histograma1.Text = "Histograma de los datos generados";
             // 
             // LimInf
             // 
@@ -99,14 +82,32 @@
             this.FreqEsp.ReadOnly = true;
             this.FreqEsp.Width = 150;
             // 
+            // Histograma1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.Histograma1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.Histograma1.Legends.Add(legend1);
+            this.Histograma1.Location = new System.Drawing.Point(12, 299);
+            this.Histograma1.Name = "Histograma1";
+            this.Histograma1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Intervalos";
+            this.Histograma1.Series.Add(series1);
+            this.Histograma1.Size = new System.Drawing.Size(1538, 417);
+            this.Histograma1.TabIndex = 1;
+            this.Histograma1.Text = "Histograma de los datos generados";
+            // 
             // PantallaHistogramaChi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1209, 695);
+            this.ClientSize = new System.Drawing.Size(1551, 718);
             this.Controls.Add(this.Histograma1);
             this.Controls.Add(this.DataGVCHI);
             this.Name = "PantallaHistogramaChi";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PantallaHistogramaChi";
             this.Load += new System.EventHandler(this.PantallaHistogramaChi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataGVCHI)).EndInit();
