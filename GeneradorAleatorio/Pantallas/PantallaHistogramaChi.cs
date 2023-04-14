@@ -1,4 +1,5 @@
 ﻿
+using LiveCharts.Wpf.Charts.Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -74,8 +75,10 @@ namespace GeneradorAleatorio.Pantallas
                 Series series = Histograma1.Series.Add( intervalos[i].ToString() );
 
                 series.Label = freq[i].ToString();
-
                 series.Points.Add(freq[i]);
+
+                //Histograma1.Series["Intervalos"].Points.AddXY(intervalos[i], freq[i]);
+                //Histograma1.Series["Intervalos"].Points[i].AxisLabel = intervalos[i].ToString();
             }
 
 

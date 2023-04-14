@@ -30,8 +30,8 @@
         {
             this.DvgArreglo = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.TxtIntervalos = new System.Windows.Forms.TextBox();
             this.BtnGenerar = new System.Windows.Forms.Button();
+            this.TxtIntervalos = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.DvgArreglo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,13 +52,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Cantidad de intervalos a graficar: ";
             // 
-            // TxtIntervalos
-            // 
-            this.TxtIntervalos.Location = new System.Drawing.Point(344, 78);
-            this.TxtIntervalos.Name = "TxtIntervalos";
-            this.TxtIntervalos.Size = new System.Drawing.Size(177, 20);
-            this.TxtIntervalos.TabIndex = 2;
-            // 
             // BtnGenerar
             // 
             this.BtnGenerar.Location = new System.Drawing.Point(391, 116);
@@ -69,16 +62,24 @@
             this.BtnGenerar.UseVisualStyleBackColor = true;
             this.BtnGenerar.Click += new System.EventHandler(this.BtnGenerar_Click);
             // 
+            // TxtIntervalos
+            // 
+            this.TxtIntervalos.Location = new System.Drawing.Point(344, 78);
+            this.TxtIntervalos.Name = "TxtIntervalos";
+            this.TxtIntervalos.Size = new System.Drawing.Size(177, 20);
+            this.TxtIntervalos.TabIndex = 2;
+            // 
             // PantallaResultados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(811, 671);
+            this.ClientSize = new System.Drawing.Size(612, 671);
             this.Controls.Add(this.BtnGenerar);
             this.Controls.Add(this.TxtIntervalos);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.DvgArreglo);
             this.Name = "PantallaResultados";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PantallaResultados";
             this.Load += new System.EventHandler(this.PantallaResultados_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DvgArreglo)).EndInit();
@@ -91,7 +92,7 @@
 
         private System.Windows.Forms.DataGridView DvgArreglo;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox TxtIntervalos;
         private System.Windows.Forms.Button BtnGenerar;
+        private System.Windows.Forms.TextBox TxtIntervalos;
     }
 }

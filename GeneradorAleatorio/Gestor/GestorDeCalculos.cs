@@ -89,25 +89,25 @@ namespace GeneradorAleatorio.Gestor
 
                 double acumulador = 0; 
 
-            for (int i = 0; i < intervalos; i++)
-            { 
-                // selecciona columnas 
-                for (int j = 0; j < 4; j++)
-                {
-                        //
-                    if (j == 0 || j==1 )
+                for (int i = 0; i < intervalos; i++)
+                { 
+                    // selecciona columnas 
+                    for (int j = 0; j < 4; j++)
                     {
-                            freqEsperada[i, j] = matriz[i, j];
-                    }
-                    /// freq observada 
-                    if (j == 2)
-                    {
-                            freqEsperada[i,j] = matriz[i,j];
-                            acumulador += matriz[i,j];
+                            //
+                        if (j == 0 || j==1 )
+                        {
+                                freqEsperada[i, j] = matriz[i, j];
+                        }
+                        /// freq observada 
+                        if (j == 2)
+                        {
+                                freqEsperada[i,j] = matriz[i,j];
+                                acumulador += matriz[i,j];
+                        }
                     }
                 }
-            }
-            for (int i = 0; i < intervalos; i++)
+                for (int i = 0; i < intervalos; i++)
                 {
                     // selecciona columnas 
                     for (int j = 0; j < 4; j++)
@@ -124,16 +124,18 @@ namespace GeneradorAleatorio.Gestor
                 for (int i = 0; i < matrizChi.GetLength(0); i++)
                 {
 
-                    for (int j = 0; j < 6; j++)
-                    {
+                   for (int j = 0; j < 6; j++)
+                   {
 
-                        if (j == 4) 
-                        {
-                            chiCalculado += matrizChi[i, j];
-                        }
-                    }
+                      if (j == 4) 
+                      {
+                          chiCalculado += matrizChi[i, j];
+                      }
+                   }
                 }
             }
+
+
             if (modoSeleccionado == 3)
             {
                 var contador = new Contar();
@@ -146,9 +148,9 @@ namespace GeneradorAleatorio.Gestor
                 for (int i = 0; i < matriz.GetLength(0); i++)
                 {
                     //recorremos columnas de la matriz
-                    for(int j = 0; j < 4; j++)
+                    for (int j = 0; j < 4; j++)
                     {
-                        double prob = (1 - Math.Exp(-(1 / mediaE) * matriz[i,1]))- (1 - Math.Exp(-(1 / mediaE) * matriz[i, 0]));
+                        double prob = (1 - Math.Exp(-(1 / mediaE) * matriz[i, 1])) - (1 - Math.Exp(-(1 / mediaE) * matriz[i, 0]));
 
                         if (j == 0 || j == 1)
                         {
@@ -166,7 +168,25 @@ namespace GeneradorAleatorio.Gestor
                     }
                 }
 
+                var matrizChi = contador.PruebaChi(matrizCompleta);
+
+                for (int i = 0; i < matrizChi.GetLength(0); i++)
+                {
+
+                    for (int j = 0; j < 6; j++)
+                    {
+
+                        if (j == 4)
+                        {
+                            chiCalculado += matrizChi[i, j];
+                        }
+                    }
+                }
+
+                contadas = matrizCompleta;
+
             }
+
             return  chiCalculado;
         }
 
