@@ -260,15 +260,12 @@ namespace GeneradorAleatorio.Contador
                         }
                           }
                         else
-                    {
-                        return retorno;
-                        break;
+                        {
+                            return retorno;
+                            break; //????????????
+                        }
                     }
-                    }
 
-
-
-                
             }
 
             return retorno;

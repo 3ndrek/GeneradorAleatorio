@@ -30,8 +30,6 @@ namespace GeneradorAleatorio.Pantallas
         }
         private List<double> GenerarRNDExponencial()
         {
-            numerosAGenerar = Int32.Parse(txtCantValores.Text);
-            media = Double.Parse(txtMedia.Text);
             Random rnd = new Random();
             int ctrl = 0;
 
@@ -48,8 +46,18 @@ namespace GeneradorAleatorio.Pantallas
         }
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-            List<double> numeros = GenerarRNDExponencial();
-            gestorDeCalculos = new GestorDeCalculos(numeros, 3, media);
+            numerosAGenerar = Int32.Parse(txtCantValores.Text);
+            media = Double.Parse(txtMedia.Text);
+            if (numerosAGenerar < 10)
+            {
+                MessageBox.Show("No se puede realizar pruebas KS o Chi con este valor. Ingrese un valor mayor o igual a 10");
+            }
+            else
+            {
+                List<double> numeros = GenerarRNDExponencial();
+                gestorDeCalculos = new GestorDeCalculos(numeros, 3, media);
+            }
+            
         }
 
         public double calcularLambda()

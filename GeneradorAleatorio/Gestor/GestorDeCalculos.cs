@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace GeneradorAleatorio.Gestor
 {
@@ -27,6 +28,7 @@ namespace GeneradorAleatorio.Gestor
 
         //solo para exponencial
         private double mediaE;
+        private int gradosLibertad;
         
         public GestorDeCalculos(List<Double> doubles, int modo, double media) 
         {
@@ -51,7 +53,7 @@ namespace GeneradorAleatorio.Gestor
 
             var prueba = PasaPrueba(NumerosGenerados, modoSeleccionado); // devuelve el valor de chi
 
-            generarPantallaHistograma(contadas);
+            generarPantallaHistograma(contadas, prueba, NumerosGenerados.Count());
 
         }
 
@@ -173,6 +175,7 @@ namespace GeneradorAleatorio.Gestor
                 chiCalculado = ValidarChiKS(matrizCompleta, numerosGenerados.Count());              
 
                 contadas = matrizCompleta;
+                gradosLibertad = gradosLibertad - 2;
 
             }
 
@@ -180,9 +183,9 @@ namespace GeneradorAleatorio.Gestor
         }
 
 
-        public void generarPantallaHistograma(double[,] freqEsperada)
+        public void generarPantallaHistograma(double[,] freqEsperada, double valorCalculado, int tamaño)
         {
-            var pant = new PantallaHistogramaChi(freqEsperada);
+            var pant = new PantallaHistogramaChi(freqEsperada, valorCalculado, tamaño, gradosLibertad);
             pant.ShowDialog();
         }
 
@@ -197,11 +200,14 @@ namespace GeneradorAleatorio.Gestor
             if (n >= 10 && n <= 30)
             {
                 valorCalculado = contador.PruebaKS(matrizCompleta, NumerosGenerados.Count());
+                //Determina el k
+                gradosLibertad = matrizCompleta.GetLength(0);
             }
             else if (n > 30)
             {
-                //sacar condición de filas nulas!!!!!!!!!!!!!!!!!!!!!
                 double[,] matriz = contador.PruebaChi(matrizCompleta);
+                //Determina el k
+                gradosLibertad = matriz.GetLength(0);
 
                 //Calcula los valores acumulados para comparar con los tabulados
                 valorCalculado = AcumularChi(matriz);
@@ -220,10 +226,6 @@ namespace GeneradorAleatorio.Gestor
                 
                 for (int j = 0; j < 5; j++)
                 {
-                    if (matriz[i, j] == 0 && i != 0)
-                    {
-                        return valorCalculado;
-                    }
 
                     if (j == 4)
                     {
