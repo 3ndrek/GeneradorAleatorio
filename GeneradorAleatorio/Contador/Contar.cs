@@ -310,23 +310,52 @@ namespace GeneradorAleatorio.Contador
 
 
         //Método KS
-        public double[,] PruebaKS(double[,] matriz)
+        public double PruebaKS(double[,] matriz, int n)
         {
             double[,] matrizKS = new double[matriz.GetLength(0), 6];
+            double valorCalculado = 0;
 
             for (int i = 0; i < matrizKS.GetLength(0); i++)
             {
-                for(int j = 0; j < 10; j++)
+                for(int j = 0; j < 6; j++)
                 {
-                    if(j > 3)
+                    if(j == 0)
                     {
-                        
+                        //Cálculo de probabilidad observada
+                        matrizKS[i, j] = matriz[i, 2] / n;
                     }
-                    
+                    if(j == 1)
+                    {
+                        //Cálculo de probabilidad esperada
+                        matrizKS[i, j] = matriz[i, 3] / n;
+
+                    }
+                    if(j == 2)
+                    {
+                        //Cálculo de probabilidad observada acumulada
+                        matrizKS[i,j] += matrizKS[i, 0];
+                    }
+                    if(j == 3)
+                    {
+                        //Cálculo de probabilidad esperada acumulada
+                        matrizKS[i, j] += matrizKS[i, 1];
+                    }
+                    if(j == 4)
+                    {
+                        //Cálculo de diferencia absoluta entre probabilidades acumuladas
+                        matrizKS[i, j] = Math.Abs(matrizKS[i, 2] - matrizKS[i, 3]);
+                    }
+                    if(j == 5)
+                    {
+                        if(valorCalculado < matrizKS[i, 4])
+                        {
+                            valorCalculado = matrizKS[i, 4];
+                        }
+                    }
                 }
             }
 
-            return matrizKS;
+            return valorCalculado;
         }
     }
 }

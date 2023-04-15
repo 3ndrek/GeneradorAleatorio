@@ -189,18 +189,19 @@ namespace GeneradorAleatorio.Gestor
 
         public double ValidarChiKS(double[,] matrizCompleta, int n)
         {
-            double[,] matriz = new double[matrizCompleta.GetLength(0), 4];
+            
             double valorCalculado = 0;
 
             Contar contador = new Contar();
 
             if (n >= 10 && n <= 30)
             {
-                matriz = contador.PruebaKS(matrizCompleta);
+                valorCalculado = contador.PruebaKS(matrizCompleta, NumerosGenerados.Count());
             }
             else if (n > 30)
             {
-                matriz = contador.PruebaChi(matrizCompleta);
+                //sacar condición de filas nulas!!!!!!!!!!!!!!!!!!!!!
+                double[,] matriz = contador.PruebaChi(matrizCompleta);
 
                 //Calcula los valores acumulados para comparar con los tabulados
                 valorCalculado = AcumularChi(matriz);
