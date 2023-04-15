@@ -284,7 +284,6 @@ namespace GeneradorAleatorio.Contador
         public double[,] PruebaChi(double[,] matrizFoFe)
         {
 
-
             double[,] matrizChi = new double[matrizFoFe.GetLength(0), 5];
             double[,] Analizar= BusquedaHastaFondo(matrizFoFe);
 
@@ -310,6 +309,25 @@ namespace GeneradorAleatorio.Contador
         }
 
 
+        //Método KS
+        public double[,] PruebaKS(double[,] matriz)
+        {
+            double[,] matrizKS = new double[matriz.GetLength(0), 6];
+
+            for (int i = 0; i < matrizKS.GetLength(0); i++)
+            {
+                for(int j = 0; j < 10; j++)
+                {
+                    if(j > 3)
+                    {
+                        
+                    }
+                    
+                }
+            }
+
+            return matrizKS;
+        }
     }
 }
 

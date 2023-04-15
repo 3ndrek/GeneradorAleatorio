@@ -168,20 +168,9 @@ namespace GeneradorAleatorio.Gestor
                     }
                 }
 
-                var matrizChi = contador.PruebaChi(matrizCompleta);
 
-                for (int i = 0; i < matrizChi.GetLength(0); i++)
-                {
-
-                    for (int j = 0; j < 6; j++)
-                    {
-
-                        if (j == 4)
-                        {
-                            chiCalculado += matrizChi[i, j];
-                        }
-                    }
-                }
+                //Determina si corresponde Chi o KS y lo hace
+                chiCalculado = ValidarChiKS(matrizCompleta, numerosGenerados.Count());              
 
                 contadas = matrizCompleta;
 
@@ -198,6 +187,52 @@ namespace GeneradorAleatorio.Gestor
         }
 
 
+        public double ValidarChiKS(double[,] matrizCompleta, int n)
+        {
+            double[,] matriz = new double[matrizCompleta.GetLength(0), 4];
+            double valorCalculado = 0;
+
+            Contar contador = new Contar();
+
+            if (n >= 10 && n <= 30)
+            {
+                matriz = contador.PruebaKS(matrizCompleta);
+            }
+            else if (n > 30)
+            {
+                matriz = contador.PruebaChi(matrizCompleta);
+
+                //Calcula los valores acumulados para comparar con los tabulados
+                valorCalculado = AcumularChi(matriz);
+            }
+
+            return valorCalculado;
+        }
+
+
+        public double AcumularChi(double[,] matriz)
+        {
+            double valorCalculado = 0;
+
+            for (int i = 0; i < matriz.GetLength(0); i++)
+            {
+                
+                for (int j = 0; j < 5; j++)
+                {
+                    if (matriz[i, j] == 0 && i != 0)
+                    {
+                        return valorCalculado;
+                    }
+
+                    if (j == 4)
+                    {
+                        valorCalculado += matriz[i, j];
+                    }
+                }
+            }
+
+            return valorCalculado;
+        }
 
     }
 }

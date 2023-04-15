@@ -90,23 +90,11 @@ namespace GeneradorAleatorio.Pantallas
             Histograma1.Series["Frecuencia Observada"].BorderWidth = 6 ;
             Histograma1.ChartAreas[0].AxisX.Interval = intervalosSuperiores[1] - intervalosInferiores[1];
             Histograma1.ChartAreas[0].AxisX.Minimum = intervalosInferiores[0];
-            Histograma1.ChartAreas[0].AxisX.Maximum = intervalosSuperiores[intervalosSuperiores.Length - 1];
+            //Histograma1.ChartAreas[0].AxisX.Maximum = intervalosSuperiores[intervalosSuperiores.Length - 1];
             Histograma1.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.LightGray;
             Histograma1.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.LightGray;
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
 
