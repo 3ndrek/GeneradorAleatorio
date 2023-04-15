@@ -1,4 +1,5 @@
 ﻿using GeneradorAleatorio.Contador;
+using GeneradorAleatorio.Helpers.Distribucion_Normal;
 using GeneradorAleatorio.Pantallas;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace GeneradorAleatorio.Gestor
     {
         public List<Double> NumerosGenerados;
         public int modoSeleccionado;
+
+
 
         private int intervalos;
 
@@ -133,6 +136,62 @@ namespace GeneradorAleatorio.Gestor
                       }
                    }
                 }
+            }
+
+            if (modoSeleccionado == 2) { 
+
+
+                //Obtengo de Program las variables que declare
+                float deviation = Program.deviation;
+
+                float media = Program.mediaN;
+
+
+                ///// Metodos de gabi para obtener intervalos y frecuencia observada //////////////
+                
+
+                var contador = new Contar();
+
+                var matriz = contador.contarEntreIntervalos(NumerosGenerados, intervalos);
+
+
+                ////////////////////////////////////////////////////////////////////////////
+                
+
+                //// Metodos propios para obtener la matriz que tiene la freucencia esperada que sera usada en prueba chi //////////
+                
+
+                var helper = new ChiCuadrado();
+
+                var matrizCompleta = helper.DevolverMatrizChi(matriz,media,deviation, numerosGenerados.Count);
+
+
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                
+
+
+                /// Aca hago la conexion con los metodos definidos de gabi para la prueba chi ///////////////////////////////////////
+                
+
+                var matrizChi = contador.PruebaChi(matrizCompleta);
+
+                for (int i = 0; i < matrizChi.GetLength(0); i++)
+                {
+
+                    for (int j = 0; j < 6; j++)
+                    {
+
+                        if (j == 4)
+                        {
+                            chiCalculado += matrizChi[i, j];
+                        }
+                    }
+                }
+
+                contadas = matrizCompleta;
+
+
+
             }
 
 

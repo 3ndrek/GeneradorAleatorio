@@ -38,6 +38,7 @@
             this.desviaInput = new System.Windows.Forms.TextBox();
             this.labelCant = new System.Windows.Forms.Label();
             this.inputCant = new System.Windows.Forms.TextBox();
+            this.btnReset = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // mediaInput
@@ -68,7 +69,7 @@
             this.btnGenerar.BackColor = System.Drawing.Color.Coral;
             this.btnGenerar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGenerar.ForeColor = System.Drawing.Color.Transparent;
-            this.btnGenerar.Location = new System.Drawing.Point(188, 445);
+            this.btnGenerar.Location = new System.Drawing.Point(188, 415);
             this.btnGenerar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(602, 54);
@@ -123,7 +124,7 @@
             this.desviaLabel.AutoSize = true;
             this.desviaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.desviaLabel.ForeColor = System.Drawing.Color.DimGray;
-            this.desviaLabel.Location = new System.Drawing.Point(181, 302);
+            this.desviaLabel.Location = new System.Drawing.Point(181, 291);
             this.desviaLabel.Name = "desviaLabel";
             this.desviaLabel.Size = new System.Drawing.Size(339, 29);
             this.desviaLabel.TabIndex = 8;
@@ -133,7 +134,7 @@
             // desviaInput
             // 
             this.desviaInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.desviaInput.Location = new System.Drawing.Point(574, 301);
+            this.desviaInput.Location = new System.Drawing.Point(574, 291);
             this.desviaInput.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.desviaInput.Name = "desviaInput";
             this.desviaInput.Size = new System.Drawing.Size(216, 30);
@@ -145,7 +146,7 @@
             this.labelCant.AutoSize = true;
             this.labelCant.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCant.ForeColor = System.Drawing.Color.DimGray;
-            this.labelCant.Location = new System.Drawing.Point(181, 360);
+            this.labelCant.Location = new System.Drawing.Point(181, 348);
             this.labelCant.Name = "labelCant";
             this.labelCant.Size = new System.Drawing.Size(334, 29);
             this.labelCant.TabIndex = 10;
@@ -155,19 +156,35 @@
             // inputCant
             // 
             this.inputCant.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inputCant.Location = new System.Drawing.Point(574, 360);
+            this.inputCant.Location = new System.Drawing.Point(574, 348);
             this.inputCant.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.inputCant.Name = "inputCant";
             this.inputCant.Size = new System.Drawing.Size(216, 30);
             this.inputCant.TabIndex = 11;
             this.inputCant.Visible = false;
             // 
+            // btnReset
+            // 
+            this.btnReset.AccessibleName = "btnConvolucion";
+            this.btnReset.BackColor = System.Drawing.Color.Coral;
+            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.ForeColor = System.Drawing.Color.Transparent;
+            this.btnReset.Location = new System.Drawing.Point(574, 506);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(216, 59);
+            this.btnReset.TabIndex = 12;
+            this.btnReset.Text = "Reiniciar";
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Visible = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // GeneradorNormal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(981, 537);
+            this.ClientSize = new System.Drawing.Size(981, 604);
+            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.inputCant);
             this.Controls.Add(this.labelCant);
             this.Controls.Add(this.desviaInput);
@@ -201,5 +218,6 @@
         private System.Windows.Forms.TextBox desviaInput;
         private System.Windows.Forms.Label labelCant;
         private System.Windows.Forms.TextBox inputCant;
+        private System.Windows.Forms.Button btnReset;
     }
 }

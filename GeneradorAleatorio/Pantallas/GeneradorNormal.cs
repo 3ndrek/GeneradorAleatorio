@@ -18,6 +18,7 @@ namespace GeneradorAleatorio.Pantallas
         private GestorDeCalculos gestorDeCalculos;
 
         int method;
+        
         public GeneradorNormal(PantallaSeleccionModo pantallaSeleccion)
         {
             InitializeComponent();
@@ -47,6 +48,13 @@ namespace GeneradorAleatorio.Pantallas
             desviaLabel.Visible = false;
             desviaInput.Visible = false;
             btnGenerar.Visible = false;
+            labelCant.Visible = false;
+            inputCant.Visible = false;
+            btnReset.Visible = false;
+
+            mediaInput.Text = "";
+            desviaInput.Text = "";
+            inputCant.Text = "";
 
             btnMuller.Visible = true;
             btnConvolucion.Visible = true;
@@ -64,9 +72,10 @@ namespace GeneradorAleatorio.Pantallas
             btnGenerar.Visible = true;
             labelCant.Visible = true;
             inputCant.Visible = true;
+            btnReset .Visible = true;   
         }
 
-        private void setToInvisible (Button name)
+        private void setToDisabled (Button name)
         {
 
             if (name == btnMuller)
@@ -82,31 +91,51 @@ namespace GeneradorAleatorio.Pantallas
             }
         }
 
-        private void btnMuller_Click(object sender, EventArgs e)
-        {
+        private void setChanges(Button name) {
 
             setMethodElementsToVisible();
-            setToInvisible(btnMuller);
+            setToDisabled(name);
+        
+        }
+
+        private void btnMuller_Click(object sender, EventArgs e)
+        {
+            // Si hago click en box muller hago visible los inputs, escondo el boton que no se usa y e inhabilito el boton actual que use para no generar errores
+            setChanges(btnMuller);
             method = 1;
 
         }
 
         private void btnConvolucion_Click(object sender, EventArgs e)
         {
-            setMethodElementsToVisible();
-            setToInvisible(btnConvolucion);
+            // Si hago click en convolucion hago visible los inputs, escondo el boton que no se usa y e inhabilito el boton actual que use para no generar errores
+            setChanges(btnConvolucion);
             method = 2;
         }
 
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-        var numeros = method == 1 ? 
+
+            //Operador ternario, si el metodo es 1 (Box Muller) llamo a mi clase auxiliar que tiene los metodos necesarios para devolver los numeros, caso contario metodo es 2 entonces
+            // hago lo correspondiente con las clases auxiliares de convolucion. De esta forma separo la capa de presentacion de la logica, llamo a las clases y estas me devuelven todo calculado
+            // sin saber como lo hicieron.
+
+        var numeros = 
+                method == 1 ? 
          (new Box_Muller()).GenerateBoxMuller(float.Parse(mediaInput.Text), float.Parse(desviaInput.Text), Int32.Parse(inputCant.Text)) : 
          (new Convolucion()).GenerateConvolution(float.Parse(mediaInput.Text), float.Parse(desviaInput.Text), Int32.Parse(inputCant.Text));
 
-         gestorDeCalculos = new GestorDeCalculos(numeros, 2);
+            // Seteo variables globales en Program para no tener que andar mandando de archivo en archivo mi media y desviacion, ademas de que si le mando al gestor
+            // la desviacion le rompo el codigo a los que hicieron los otros metodos
+            Program.deviation = float.Parse(desviaInput.Text);
+            Program.mediaN = float.Parse(mediaInput.Text);
+
+         gestorDeCalculos = new GestorDeCalculos(numeros, 2,double.Parse(mediaInput.Text));
         }
 
-
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            initialConditions();
+        }
     }
 }
