@@ -282,7 +282,7 @@ namespace GeneradorAleatorio.Contador
         {
 
             double[,] matrizChi = new double[matrizFoFe.GetLength(0), 5];
-            double[,] Analizar= BusquedaHastaFondo(matrizFoFe);
+            double[,] Analizar = matrizFoFe;
 
             for (int i = 0; i < Analizar.GetLength(0); i++)
             {

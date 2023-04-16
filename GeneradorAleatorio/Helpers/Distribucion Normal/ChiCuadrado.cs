@@ -65,7 +65,7 @@ namespace GeneradorAleatorio.Helpers.Distribucion_Normal
 
 
                 // Agregar el valor de la probabilidad a la columna 5 que es una de las dos que agregue
-                matrizConFrecuencia[i, 4] =(( Math.Pow(Math.E, -0.5*( Math.Pow(x, 2))) ) / deviation * Math.Sqrt(2 * Math.PI)) * (hasta - desde );
+                matrizConFrecuencia[i, 4] =(Math.Exp( -0.5 * (Math.Pow(x, 2))) / (deviation * Math.Sqrt(2 * Math.PI))) * (hasta - desde );
 
 
                 // Agregar el valor de la frecuencia esperada a la columna 6 que surge de multiplicar [i,4] que es la columna que calcule recien (de probabilidad) por la cantidad de muestra

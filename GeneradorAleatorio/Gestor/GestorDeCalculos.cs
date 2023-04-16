@@ -124,20 +124,12 @@ namespace GeneradorAleatorio.Gestor
                     }
                 }
 
-                var matrizChi = contador.PruebaChi(freqEsperada);
 
-                for (int i = 0; i < matrizChi.GetLength(0); i++)
-                {
 
-                   for (int j = 0; j < 6; j++)
-                   {
+                chiCalculado = ValidarChiKS(freqEsperada, numerosGenerados.Count());
 
-                      if (j == 4) 
-                      {
-                          chiCalculado += matrizChi[i, j];
-                      }
-                   }
-                }
+                contadas = freqEsperada;
+                gradosLibertad = gradosLibertad - 2;
             }
 
             if (modoSeleccionado == 2) { 
@@ -169,28 +161,17 @@ namespace GeneradorAleatorio.Gestor
 
 
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                
+
 
 
                 /// Aca hago la conexion con los metodos definidos de gabi para la prueba chi ///////////////////////////////////////
-                
 
-                var matrizChi = contador.PruebaChi(matrizCompleta);
-
-                for (int i = 0; i < matrizChi.GetLength(0); i++)
-                {
-
-                    for (int j = 0; j < 6; j++)
-                    {
-
-                        if (j == 4)
-                        {
-                            chiCalculado += matrizChi[i, j];
-                        }
-                    }
-                }
+                //Determina si corresponde Chi o KS y lo hace
+                chiCalculado = ValidarChiKS(matrizCompleta, numerosGenerados.Count());
 
                 contadas = matrizCompleta;
+                gradosLibertad = gradosLibertad - 2;
+
 
 
 
