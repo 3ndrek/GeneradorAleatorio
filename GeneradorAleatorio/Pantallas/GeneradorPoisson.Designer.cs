@@ -28,69 +28,70 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.BtnGenerar = new System.Windows.Forms.Button();
-            this.CmbModo = new System.Windows.Forms.ComboBox();
+            this.btnPoisson = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtMuestra = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.txtLambda = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // BtnGenerar
+            // btnPoisson
             // 
-            this.BtnGenerar.Location = new System.Drawing.Point(245, 233);
-            this.BtnGenerar.Name = "BtnGenerar";
-            this.BtnGenerar.Size = new System.Drawing.Size(75, 23);
-            this.BtnGenerar.TabIndex = 0;
-            this.BtnGenerar.Text = "Generar";
-            this.BtnGenerar.UseVisualStyleBackColor = true;
-            this.BtnGenerar.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // CmbModo
-            // 
-            this.CmbModo.FormattingEnabled = true;
-            this.CmbModo.Location = new System.Drawing.Point(217, 52);
-            this.CmbModo.Name = "CmbModo";
-            this.CmbModo.Size = new System.Drawing.Size(121, 21);
-            this.CmbModo.TabIndex = 1;
+            this.btnPoisson.Location = new System.Drawing.Point(414, 237);
+            this.btnPoisson.Name = "btnPoisson";
+            this.btnPoisson.Size = new System.Drawing.Size(93, 36);
+            this.btnPoisson.TabIndex = 0;
+            this.btnPoisson.Text = "Generar";
+            this.btnPoisson.UseVisualStyleBackColor = true;
+            this.btnPoisson.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(196, 36);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(140, 50);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(169, 13);
+            this.label1.Size = new System.Drawing.Size(71, 20);
             this.label1.TabIndex = 2;
-            this.label1.Text = "¿En base de qué desea calcular? ";
+            this.label1.Text = "Lambda:";
             // 
-            // textBox1
+            // txtMuestra
             // 
-            this.textBox1.Location = new System.Drawing.Point(219, 143);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 20);
-            this.textBox1.TabIndex = 3;
+            this.txtMuestra.Location = new System.Drawing.Point(219, 143);
+            this.txtMuestra.Name = "txtMuestra";
+            this.txtMuestra.Size = new System.Drawing.Size(121, 20);
+            this.txtMuestra.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(238, 111);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(140, 141);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 13);
+            this.label2.Size = new System.Drawing.Size(71, 20);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Ingrese el valor ";
+            this.label2.Text = "Muestra:";
+            // 
+            // txtLambda
+            // 
+            this.txtLambda.Location = new System.Drawing.Point(219, 50);
+            this.txtLambda.Name = "txtLambda";
+            this.txtLambda.Size = new System.Drawing.Size(121, 20);
+            this.txtLambda.TabIndex = 5;
             // 
             // GeneradorPoisson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(544, 301);
+            this.ClientSize = new System.Drawing.Size(519, 285);
+            this.Controls.Add(this.txtLambda);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtMuestra);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.CmbModo);
-            this.Controls.Add(this.BtnGenerar);
+            this.Controls.Add(this.btnPoisson);
             this.Name = "GeneradorPoisson";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "GeneradorPoisson";
+            this.Text = "A";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GeneradorPoisson_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -99,10 +100,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button BtnGenerar;
-        private System.Windows.Forms.ComboBox CmbModo;
+        private System.Windows.Forms.Button btnPoisson;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtMuestra;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtLambda;
     }
 }

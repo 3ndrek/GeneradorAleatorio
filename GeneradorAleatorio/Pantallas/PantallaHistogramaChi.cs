@@ -24,8 +24,6 @@ namespace GeneradorAleatorio.Pantallas
             InitializeComponent();
             frecuencia0 = frecuenciaObservada;
             cargarMatrizDGV();
-
-
         }
 
 

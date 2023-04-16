@@ -72,12 +72,12 @@ namespace GeneradorAleatorio.Gestor
             double chiCalculado = 0;
             // uniforme 
 
-            if (modoSeleccionado==1 )
+            if (modoSeleccionado == 1)
             {
                 var contador = new Contar();
 
-                var matriz = contador.ContarEntreIntervalosParaUniforme(NumerosGenerados, intervalos,limInf,limSup );
-                
+                var matriz = contador.ContarEntreIntervalosParaUniforme(NumerosGenerados, intervalos, limInf, limSup);
+
                 //asigno a la global para darle visibilidad a la pantalla 
 
                 double[,] freqEsperada = new double[matriz.GetLength(0), 4];
@@ -85,34 +85,34 @@ namespace GeneradorAleatorio.Gestor
 
                 //calcular probabilidad del intervalo 
 
-                double prob = (matriz[0,1]- limInf)/(limSup-limInf);
+                double prob = (matriz[0, 1] - limInf) / (limSup - limInf);
 
-                double acumulador = 0; 
+                double acumulador = 0;
 
-            for (int i = 0; i < intervalos; i++)
-            { 
-                // selecciona columnas 
-                for (int j = 0; j < 4; j++)
-                {
-                        //
-                    if (j == 0 || j==1 )
-                    {
-                            freqEsperada[i, j] = matriz[i, j];
-                    }
-                    /// freq observada 
-                    if (j == 2)
-                    {
-                            freqEsperada[i,j] = matriz[i,j];
-                            acumulador += matriz[i,j];
-                    }
-                }
-            }
-            for (int i = 0; i < intervalos; i++)
+                for (int i = 0; i < intervalos; i++)
                 {
                     // selecciona columnas 
                     for (int j = 0; j < 4; j++)
                     {
-                        if (j==3)
+
+                        if (j == 0 || j == 1)
+                        {
+                            freqEsperada[i, j] = matriz[i, j];
+                        }
+                        // freq observada 
+                        if (j == 2)
+                        {
+                            freqEsperada[i, j] = matriz[i, j];
+                            acumulador += matriz[i, j];
+                        }
+                    }
+                }
+                for (int i = 0; i < intervalos; i++)
+                {
+                    // selecciona columnas 
+                    for (int j = 0; j < 4; j++)
+                    {
+                        if (j == 3)
                         {
                             freqEsperada[i, j] = acumulador * prob;
                         }
@@ -127,15 +127,27 @@ namespace GeneradorAleatorio.Gestor
                     for (int j = 0; j < 6; j++)
                     {
 
-                        if (j == 4) 
+                        if (j == 4)
                         {
                             chiCalculado += matrizChi[i, j];
                         }
                     }
                 }
+
+
             }
-            return  chiCalculado;
-        }
+
+
+            if (modoSeleccionado == 4)
+            {
+
+
+            }
+
+            return chiCalculado;
+
+        }   
+            
 
 
         public void generarPantallaHistograma(double[,] freqEsperada)
