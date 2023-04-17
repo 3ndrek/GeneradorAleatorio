@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -19,7 +20,7 @@ namespace GeneradorAleatorio.Pantallas
         private double[,] frecuencia0;
         private double valorCalc;
         private int tamañoMuestra;
-        private List<Double> valoresTabuladosChi = new List<Double> { 3.83, 5.99, 7.81, 9.49, 11.1, 12.6, 14.1, 15.5, 16.9, 18.3, 19.7, 21.0, 22.4, 23.7, 25.0, 26.3, 27.6, 28.9, 30.1, 31.4, 32.7, 33.9, 35.2, 36.4, 37.7, 38.9, 40.1, 41.3, 42.6, 43.8, 55.8, 67.5, 79.1, 90.5, 101.9, 113.1, 124.3 };
+        private List<Double> valoresTabuladosChi = new List<Double> { 3.83, 5.99, 7.81, 9.49, 11.1, 12.6, 14.1, 15.5, 16.9, 18.3, 19.7, 21.0, 22.4, 23.7, 25.0, 26.3, 27.6, 28.9, 30.1, 31.4, 32.7, 33.9, 35.2, 36.4, 37.7, 38.9, 40.1, 41.3, 42.6, 43.8, 44.98, 46.19, 43.39, 48.60, 49.80, 50.99, 52.19, 53.38, 54.57, 55.8, 56.94, 58.12, 59.30, 60.48, 61.65, 62.83, 64.00, 65.75, 66.33, 67.5 };
         private List<Double> valoresTabuladosKS = new List<Double> { 0.97500, 0.84189, 0.70760, 0.62394, 0.56328, 0.51926, 0.48342, 0.45427, 0.43001, 0.40925, 0.39122, 0.37543, 0.36143, 0.34890, 0.33750, 0.32733, 0.31796, 0.30936, 0.30143, 0.29408, 0.28724, 0.28087, 0.27490, 0.26931, 0.26404, 0.25908, 0.25438, 0.24993, 0.24571, 0.24170, 0.23788, 0.23076, 0.22743, 0.22425 };
         private int gradosL;
 
@@ -107,31 +108,60 @@ namespace GeneradorAleatorio.Pantallas
             if(tamañoMuestra <= 30 && tamañoMuestra >= 10)
             {
                 //Se fija el valor correspondiente en la tabla ks con un alfa=5%
-                lblValorTabulado.Text = valoresTabuladosKS[gradosL - 1].ToString();
-
-                if (Double.Parse(lblValorCalculado.Text) <= Double.Parse(lblValorTabulado.Text))
+                if (gradosL <= 35)
                 {
-                    lblAceptacion.Text = "Se ACEPTA la hipótesis nula según prueba de Kolmogorov-Smirnov";
+                    lblValorTabulado.Text = valoresTabuladosKS[gradosL - 1].ToString();
                 }
                 else
                 {
-                    lblAceptacion.Text = "No se acepta la hipótesis nula según prueba de Kolmogorov-Smirnov";
+                    lblValorTabulado.Text = (1.36 / Math.Sqrt(gradosL)).ToString();
                 }
+                try
+                {
+                    if (Double.Parse(lblValorCalculado.Text) <= Double.Parse(lblValorTabulado.Text))
+                    {
+                        lblAceptacion.Text = "Se ACEPTA la hipótesis nula según prueba de Kolmogorov-Smirnov";
+                    }
+                    else
+                    {
+                        lblAceptacion.Text = "No se acepta la hipótesis nula según prueba de Kolmogorov-Smirnov";
+                    }
+                }
+                catch
+                {
+
+                }
+                
             }
 
             else if(tamañoMuestra > 30)
             {
                 //Se fija el valor correspondiente en la tabla chi-cuadrado con un alfa=5%
-                lblValorTabulado.Text = valoresTabuladosChi[gradosL - 1].ToString();
+                if(gradosL <= 30)
+                {
+                    lblValorTabulado.Text = valoresTabuladosChi[gradosL - 1].ToString();
+                }
+                else if(gradosL > 50) 
+                {
+                    System.Windows.Forms.MessageBox.Show("No es posible calcular. Por favor intente otro valor de intervalo");
+                    this.Close();
+                }
+                try
+                {
+                    if (Double.Parse(lblValorCalculado.Text) <= Double.Parse(lblValorTabulado.Text))
+                    {
+                        lblAceptacion.Text = "Se ACEPTA la hipótesis nula según prueba de Chi-Cuadrado";
+                    }
+                    else
+                    {
+                        lblAceptacion.Text = "No se acepta la hipótesis nula según prueba de Chi-Cuadrado";
+                    }
+                }
+                catch
+                {
 
-                if (Double.Parse(lblValorCalculado.Text) <= Double.Parse(lblValorTabulado.Text))
-                {
-                    lblAceptacion.Text = "Se ACEPTA la hipótesis nula según prueba de Chi-Cuadrado";
                 }
-                else
-                {
-                    lblAceptacion.Text = "No se acepta la hipótesis nula según prueba de Chi-Cuadrado";
-                }
+                
             }
 
         }
