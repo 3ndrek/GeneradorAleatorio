@@ -29,13 +29,13 @@ namespace GeneradorAleatorio.Pantallas
 
         private void PantallaResultados_Load(object sender, EventArgs e)
         {
-            DvgArreglo.Columns.Add("Columna1", "Orden");
+
             DvgArreglo.Columns.Add("Columna2", "Valor");
-            var a = 0;
+
             foreach (Double i in numerosRandom)
             {
-                a++;
-                DvgArreglo.Rows.Add(a, Math.Round(i,4));  
+
+                DvgArreglo.Rows.Add( Math.Round(i,4));  
             }
         }
 
