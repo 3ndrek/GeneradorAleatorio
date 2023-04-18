@@ -48,19 +48,14 @@ namespace GeneradorAleatorio.Pantallas
                     int inter = Int32.Parse(TxtIntervalos.Text);
                     gestor.asignarIntervalos(inter);
                 }
-
-                
-                
+              
             }
             catch
             {
                 MessageBox.Show("Debe ingresar un valor entero positivo");
             }
-            
 
         }
-
-
 
         // estaría para desde acá generar un archivo csv, o desde acá o desde la de chi 
     }
