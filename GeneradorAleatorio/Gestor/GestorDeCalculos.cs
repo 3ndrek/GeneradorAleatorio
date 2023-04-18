@@ -219,6 +219,46 @@ namespace GeneradorAleatorio.Gestor
 
             }
 
+            if(modoSeleccionado == 4)
+            {
+                var contador = new Contar();
+
+                var matriz = contador.contarEntreIntervalos(NumerosGenerados, intervalos);
+
+                double[,] matrizCompleta = new double[matriz.GetLength(0), 4];
+
+                //recorremos filas de la matriz
+                for (int i = 0; i < matriz.GetLength(0); i++)
+                {
+                    //recorremos columnas de la matriz
+                    for (int j = 0; j < 4; j++)
+                    {
+                        double prob = (1 - Math.Exp(-(1 / mediaE) * matriz[i, 1])) - (1 - Math.Exp(-(1 / mediaE) * matriz[i, 0]));
+
+                        if (j == 0 || j == 1)
+                        {
+                            matrizCompleta[i, j] = matriz[i, j];
+                        }
+                        /// freq observada 
+                        if (j == 2)
+                        {
+                            matrizCompleta[i, j] = matriz[i, j];
+                        }
+                        if (j == 3)
+                        {
+                            matrizCompleta[i, j] = prob * (numerosGenerados.Count);
+                        }
+                    }
+                }
+
+
+                //Determina si corresponde Chi o KS y lo hace
+                chiCalculado = ValidarChiKS(matrizCompleta, numerosGenerados.Count());
+
+                contadas = matrizCompleta;
+                gradosLibertad = gradosLibertad - 2;
+            }
+
             return  chiCalculado;
         }
 
