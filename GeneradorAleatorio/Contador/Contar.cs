@@ -11,9 +11,11 @@ namespace GeneradorAleatorio.Contador
         private int ContarValoresEnIntervalo(List<Double> numeros, double min, double max)
         {
             int contador = 0;
+            double valorMax = numeros.Max();
+
             foreach (double numero in numeros)
             {
-                if (numero >= min && numero < max) // creo que toma bien el {) intervalo 
+                if ((numero >= min && numero < max) || (numero >= min && numero == valorMax)) // creo que toma bien el {) intervalo 
                 {
                     contador++;
                 }
@@ -30,7 +32,7 @@ namespace GeneradorAleatorio.Contador
             double limIntervalo = minimo;
 
 
-            double ancho = (maximo - minimo) / intervalos;
+            double ancho = ((maximo - minimo) / intervalos)+ 0.0001 ;
             double[,] retorno = new double[intervalos, 3];
             // selecciona fila 
 
@@ -258,15 +260,12 @@ namespace GeneradorAleatorio.Contador
                         }
                           }
                         else
-                    {
-                        return retorno;
-                        break;
+                        {
+                            return retorno;
+                            break; //????????????
+                        }
                     }
-                    }
 
-
-
-                
             }
 
             return retorno;
@@ -282,9 +281,8 @@ namespace GeneradorAleatorio.Contador
         public double[,] PruebaChi(double[,] matrizFoFe)
         {
 
-
             double[,] matrizChi = new double[matrizFoFe.GetLength(0), 5];
-            double[,] Analizar= BusquedaHastaFondo(matrizFoFe);
+            double[,] Analizar = matrizFoFe;
 
             for (int i = 0; i < Analizar.GetLength(0); i++)
             {
@@ -308,6 +306,54 @@ namespace GeneradorAleatorio.Contador
         }
 
 
+        //Método KS
+        public double PruebaKS(double[,] matriz, int n)
+        {
+            double[,] matrizKS = new double[matriz.GetLength(0), 6];
+            double valorCalculado = 0;
+
+            for (int i = 0; i < matrizKS.GetLength(0); i++)
+            {
+                for(int j = 0; j < 6; j++)
+                {
+                    if(j == 0)
+                    {
+                        //Cálculo de probabilidad observada
+                        matrizKS[i, j] = matriz[i, 2] / n;
+                    }
+                    if(j == 1)
+                    {
+                        //Cálculo de probabilidad esperada
+                        matrizKS[i, j] = matriz[i, 3] / n;
+
+                    }
+                    if(j == 2)
+                    {
+                        //Cálculo de probabilidad observada acumulada
+                        matrizKS[i,j] += matrizKS[i, 0];
+                    }
+                    if(j == 3)
+                    {
+                        //Cálculo de probabilidad esperada acumulada
+                        matrizKS[i, j] += matrizKS[i, 1];
+                    }
+                    if(j == 4)
+                    {
+                        //Cálculo de diferencia absoluta entre probabilidades acumuladas
+                        matrizKS[i, j] = Math.Abs(matrizKS[i, 2] - matrizKS[i, 3]);
+                    }
+                    if(j == 5)
+                    {
+                        if(valorCalculado < matrizKS[i, 4])
+                        {
+                            valorCalculado = matrizKS[i, 4];
+                        }
+                    }
+                }
+            }
+
+            return valorCalculado;
+        }
     }
 }
 

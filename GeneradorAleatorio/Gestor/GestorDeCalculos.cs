@@ -1,10 +1,12 @@
 ﻿using GeneradorAleatorio.Contador;
+using GeneradorAleatorio.Helpers.Distribucion_Normal;
 using GeneradorAleatorio.Pantallas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace GeneradorAleatorio.Gestor
 {
@@ -13,6 +15,8 @@ namespace GeneradorAleatorio.Gestor
     {
         public List<Double> NumerosGenerados;
         public int modoSeleccionado;
+
+
 
         private int intervalos;
 
@@ -25,14 +29,15 @@ namespace GeneradorAleatorio.Gestor
         // solución para pasar la matriz contada a la pantalla 
         private double[,] contadas;
 
-
-
-
+        //solo para exponencial
+        private double mediaE;
+        private int gradosLibertad;
         
-        public GestorDeCalculos(List<Double> doubles, int modo ) 
+        public GestorDeCalculos(List<Double> doubles, int modo, double media) 
         {
             NumerosGenerados= doubles;
             modoSeleccionado = modo;
+            mediaE = media;
 
 
             // carga la pantalla 
@@ -51,7 +56,7 @@ namespace GeneradorAleatorio.Gestor
 
             var prueba = PasaPrueba(NumerosGenerados, modoSeleccionado); // devuelve el valor de chi
 
-            generarPantallaHistograma(contadas);
+            generarPantallaHistograma(contadas, prueba, NumerosGenerados.Count());
 
         }
 
@@ -90,20 +95,20 @@ namespace GeneradorAleatorio.Gestor
                 double acumulador = 0;
 
                 for (int i = 0; i < intervalos; i++)
-                {
+                { 
                     // selecciona columnas 
                     for (int j = 0; j < 4; j++)
                     {
-
-                        if (j == 0 || j == 1)
+                            //
+                        if (j == 0 || j==1 )
                         {
-                            freqEsperada[i, j] = matriz[i, j];
+                                freqEsperada[i, j] = matriz[i, j];
                         }
-                        // freq observada 
+                        /// freq observada 
                         if (j == 2)
                         {
-                            freqEsperada[i, j] = matriz[i, j];
-                            acumulador += matriz[i, j];
+                                freqEsperada[i,j] = matriz[i,j];
+                                acumulador += matriz[i,j];
                         }
                     }
                 }
@@ -119,44 +124,158 @@ namespace GeneradorAleatorio.Gestor
                     }
                 }
 
-                var matrizChi = contador.PruebaChi(freqEsperada);
 
-                for (int i = 0; i < matrizChi.GetLength(0); i++)
+
+                chiCalculado = ValidarChiKS(freqEsperada, numerosGenerados.Count());
+
+                contadas = freqEsperada;
+                gradosLibertad = gradosLibertad - 2;
+            }
+
+            if (modoSeleccionado == 2) { 
+
+
+                //Obtengo de Program las variables que declare
+                float deviation = Program.deviation;
+
+                float media = Program.mediaN;
+
+
+                ///// Metodos de gabi para obtener intervalos y frecuencia observada //////////////
+                
+
+                var contador = new Contar();
+
+                var matriz = contador.contarEntreIntervalos(NumerosGenerados, intervalos);
+
+
+                ////////////////////////////////////////////////////////////////////////////
+                
+
+                //// Metodos propios para obtener la matriz que tiene la freucencia esperada que sera usada en prueba chi //////////
+                
+
+                var helper = new ChiCuadrado();
+
+                var matrizCompleta = helper.DevolverMatrizChi(matriz,media,deviation, numerosGenerados.Count);
+
+
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+                /// Aca hago la conexion con los metodos definidos de gabi para la prueba chi ///////////////////////////////////////
+
+                //Determina si corresponde Chi o KS y lo hace
+                chiCalculado = ValidarChiKS(matrizCompleta, numerosGenerados.Count());
+
+                contadas = matrizCompleta;
+                gradosLibertad = gradosLibertad - 2;
+
+
+
+
+            }
+
+
+            if (modoSeleccionado == 3)
+            {
+                var contador = new Contar();
+
+                var matriz = contador.contarEntreIntervalos(NumerosGenerados, intervalos);
+
+                double[,] matrizCompleta = new double[matriz.GetLength(0), 4];
+
+                //recorremos filas de la matriz
+                for (int i = 0; i < matriz.GetLength(0); i++)
                 {
-
-                    for (int j = 0; j < 6; j++)
+                    //recorremos columnas de la matriz
+                    for (int j = 0; j < 4; j++)
                     {
+                        double prob = (1 - Math.Exp(-(1 / mediaE) * matriz[i, 1])) - (1 - Math.Exp(-(1 / mediaE) * matriz[i, 0]));
 
-                        if (j == 4)
+                        if (j == 0 || j == 1)
                         {
-                            chiCalculado += matrizChi[i, j];
+                            matrizCompleta[i, j] = matriz[i, j];
+                        }
+                        /// freq observada 
+                        if (j == 2)
+                        {
+                            matrizCompleta[i, j] = matriz[i, j];
+                        }
+                        if (j == 3)
+                        {
+                            matrizCompleta[i, j] = prob * (numerosGenerados.Count);
                         }
                     }
                 }
 
 
+                //Determina si corresponde Chi o KS y lo hace
+                chiCalculado = ValidarChiKS(matrizCompleta, numerosGenerados.Count());              
+
+                contadas = matrizCompleta;
+                gradosLibertad = gradosLibertad - 2;
+
             }
 
-
-            if (modoSeleccionado == 4)
-            {
-
-
-            }
-
-            return chiCalculado;
-
-        }   
-            
+            return  chiCalculado;
+        }
 
 
-        public void generarPantallaHistograma(double[,] freqEsperada)
+        public void generarPantallaHistograma(double[,] freqEsperada, double valorCalculado, int tamaño)
         {
-            var pant = new PantallaHistogramaChi(freqEsperada);
+            var pant = new PantallaHistogramaChi(freqEsperada, valorCalculado, tamaño, gradosLibertad);
             pant.ShowDialog();
         }
 
 
+        public double ValidarChiKS(double[,] matrizCompleta, int n)
+        {
+            
+            double valorCalculado = 0;
+
+            Contar contador = new Contar();
+
+            if (n >= 10 && n <= 30)
+            {
+                valorCalculado = contador.PruebaKS(matrizCompleta, NumerosGenerados.Count());
+                //Determina el k
+                gradosLibertad = matrizCompleta.GetLength(0);
+            }
+            else if (n > 30)
+            {
+                double[,] matriz = contador.PruebaChi(matrizCompleta);
+                //Determina el k
+                gradosLibertad = matriz.GetLength(0);
+
+                //Calcula los valores acumulados para comparar con los tabulados
+                valorCalculado = AcumularChi(matriz);
+            }
+
+            return valorCalculado;
+        }
+
+
+        public double AcumularChi(double[,] matriz)
+        {
+            double valorCalculado = 0;
+
+            for (int i = 0; i < matriz.GetLength(0); i++)
+            {
+                
+                for (int j = 0; j < 5; j++)
+                {
+
+                    if (j == 4)
+                    {
+                        valorCalculado += matriz[i, j];
+                    }
+                }
+            }
+
+            return valorCalculado;
+        }
 
     }
 }
