@@ -39,14 +39,24 @@ namespace GeneradorAleatorio.Pantallas
             }
         }
 
-
-
-     
-
         private void BtnGenerar_Click(object sender, EventArgs e)
         {
-            int inter = Int32.Parse(TxtIntervalos.Text);
-            gestor.asignarIntervalos(inter);
+            try
+            {
+                if(TxtIntervalos.Text != "")
+                {
+                    int inter = Int32.Parse(TxtIntervalos.Text);
+                    gestor.asignarIntervalos(inter);
+                }
+
+                
+                
+            }
+            catch
+            {
+                MessageBox.Show("Debe ingresar un valor entero positivo");
+            }
+            
 
         }
 
