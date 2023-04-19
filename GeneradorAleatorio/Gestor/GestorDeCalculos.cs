@@ -16,7 +16,7 @@ namespace GeneradorAleatorio.Gestor
         public List<Double> NumerosGenerados;
         public int modoSeleccionado;
 
-
+        public double Plambda;
 
         private int intervalos;
 
@@ -219,6 +219,48 @@ namespace GeneradorAleatorio.Gestor
 
             }
 
+            if (modoSeleccionado == 4)
+            {
+
+                var contador = new Contar();
+
+                var matriz = contador.contarEntreIntervalos(NumerosGenerados, intervalos);
+
+                double[,] matrizCompleta = new double[matriz.GetLength(0), 4];
+
+
+                for (int i = 0; i < matriz.GetLength(0); i++)
+                {
+
+                    for (int j = 0; j < 4; j++)
+                    {
+
+                        if (j == 0 || j == 1)
+                        {
+                            matrizCompleta[i, j] = matriz[i, j];
+                        }
+
+                        if (j == 2)
+                        {
+                            matrizCompleta[i, j] = matriz[i, j] * Plambda;
+                        }
+                        if (j == 3)
+                        {
+                            int k = (int)matriz[i, 0];
+                            double prob = Math.Exp(-Plambda) * Math.Pow(Plambda, k) / Factorial(k);
+                            matrizCompleta[i, j] = prob * (NumerosGenerados.Count);
+                        }
+                    }
+                }
+
+
+                //Determina si corresponde Chi o KS y lo hace
+                chiCalculado = ValidarChiKS(matrizCompleta, numerosGenerados.Count());
+
+                contadas = matrizCompleta;
+                gradosLibertad = gradosLibertad - 2;
+            }
+
             return  chiCalculado;
         }
 
@@ -275,6 +317,18 @@ namespace GeneradorAleatorio.Gestor
             }
 
             return valorCalculado;
+        }
+
+        private static double Factorial(int n)
+        {
+            if (n <= 1)
+            {
+                return 1;
+            }
+            else
+            {
+                return n * Factorial(n - 1);
+            }
         }
 
     }

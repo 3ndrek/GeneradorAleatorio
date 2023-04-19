@@ -26,7 +26,9 @@ namespace GeneradorAleatorio.Pantallas
 
         private void button1_Click(object sender, EventArgs e)
         {
-            gestor = new GestorDeCalculos(GenerarPoisson(), 4);
+            gestor = new GestorDeCalculos(GenerarPoisson(), 4, 0);
+            double lambda = Convert.ToDouble(txtLambda.Text);
+            gestor.Plambda = lambda;
         }
 
         private List<double> GenerarPoisson()
