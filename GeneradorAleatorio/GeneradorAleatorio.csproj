@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contador\Contar.cs" />
+    <Compile Include="Entidades\Intervalo.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +73,7 @@
     <Compile Include="Helpers\Distribucion Normal\ChiCuadrado.cs" />
     <Compile Include="Helpers\Distribucion Normal\Convolucion.cs" />
     <Compile Include="Helpers\Distribucion Normal\Box-Muller.cs" />
+    <Compile Include="Helpers\Distribucion Poisson\probabilidad.cs" />
     <Compile Include="Pantallas\GeneadorUniforme.cs">
       <SubType>Form</SubType>
     </Compile>

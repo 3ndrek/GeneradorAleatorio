@@ -17,6 +17,7 @@ namespace GeneradorAleatorio.Pantallas
         private PantallaSeleccionModo pantallaSeleccion;
 
         private GestorDeCalculos gestor;
+        private double media;
         public GeneradorPoisson(PantallaSeleccionModo pantallaSeleccionModo)
         {
             pantallaSeleccion = pantallaSeleccionModo;
@@ -26,7 +27,7 @@ namespace GeneradorAleatorio.Pantallas
 
         private void button1_Click(object sender, EventArgs e)
         {
-            gestor = new GestorDeCalculos(GenerarPoisson(), 4, 0);
+            gestor = new GestorDeCalculos(GenerarPoisson(), 4, media );
         }
 
         private List<double> GenerarPoisson()
@@ -34,6 +35,7 @@ namespace GeneradorAleatorio.Pantallas
             // Convierto los inputs en numeros
 
             double lambda = Convert.ToDouble(txtLambda.Text);
+            media = lambda; 
             int muestra = Convert.ToInt32(txtMuestra.Text);
 
             double exp = Math.Exp(-lambda);

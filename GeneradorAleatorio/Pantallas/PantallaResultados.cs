@@ -41,20 +41,12 @@ namespace GeneradorAleatorio.Pantallas
 
         private void BtnGenerar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if(TxtIntervalos.Text != "")
+                if(TxtIntervalos.Text != null )
                 {
                     int inter = Int32.Parse(TxtIntervalos.Text);
                     gestor.asignarIntervalos(inter);
                 }
-              
-            }
-            catch
-            {
-                MessageBox.Show("Debe ingresar un valor entero positivo");
-            }
-
+         
         }
 
         // estaría para desde acá generar un archivo csv, o desde acá o desde la de chi 

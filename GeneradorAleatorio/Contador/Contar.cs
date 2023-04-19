@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GeneradorAleatorio.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,7 +33,7 @@ namespace GeneradorAleatorio.Contador
             double limIntervalo = minimo;
 
 
-            double ancho = ((maximo - minimo) / intervalos)+ 0.0001 ;
+            double ancho = ((maximo - minimo) / intervalos) + 0.0001;
             double[,] retorno = new double[intervalos, 3];
             // selecciona fila 
 
@@ -116,185 +117,119 @@ namespace GeneradorAleatorio.Contador
             return retorno;
         }
 
-
-        private double[,] BusquedaHastaFondo(double[,] matrizz)
+        /* Código de sol 
+         * 
+         * 
+        // Metodo que se encarga de reducir los intervalos para la prueba Ji Cuadrado
+        public List<Intervalo> reducir(int distro)
         {
-            double[,] retorno = new double[matrizz.GetLength(0), 4];
+            // Los intervalos que tengo 
+            List<Intervalo> aux = new List<Intervalo>();
 
-
-            double[,] posicionAcumulada = new double[matrizz.GetLength(0), 4];
-            double[,] posicionAnterior = new double[matrizz.GetLength(0), 4];
-
-            double[,] matrizMenor5 = new double[matrizz.GetLength(0), 4];
-
-
-
-            // armar matriz de < 5, considerando que no puedan venir intervalos salteados 
-
-            int filaanterior = 0;
-            for (int i = 0; i < matrizz.GetLength(0); i++)
+            // Los que voy a obtener, reducidos
+            List<Intervalo> reducidos = new List<Intervalo>();
+            int prueba = 0;
+            // Recorro los intervalos que tengo
+            for (int i = 0; i < intervalos.Count; i++)
             {
-                filaanterior++;
-
-                if (matrizz[i, 3] < 5)
+                // Si la FE es mayor a 5
+                if (intervalos[i].frecuenciaEsperada > 5)
                 {
-
-                    for (int j = 0; j < 4; j++)
+                    reducidos.Add(aux[i]);
+                    prueba++;
+                }
+                else
+                {
+                    // Si no estoy en el 
+                    if (i + 1 != intervalos.Count)
                     {
-                        matrizMenor5[i, j] = matrizz[i, j];
-
-                        if (filaanterior == 1)
+                        int cantidadPruebas = 0;
+                        for (int j = i + 1; j < intervalos.Count; j++)
                         {
-                            posicionAnterior[1, j] = matrizz[(i - 1), j];
+
+                            if (distro < 2)
+                            {
+                                aux[i].fusionarIntervalo(aux[j]);
+                            }
+                            else
+                            {
+                                ((ValorPoisson)aux[i]).fusionarIntervalo(aux[j]);
+                            }
+
+                            if (aux[i].frecuenciaEsperada > 5)
+                            {
+                                reducidos.Add(aux[i]);
+                                cantidadPruebas += 2;
+
+                                prueba += cantidadPruebas;
+                                i = j;
+                                break;
+                            }
+                            else
+                            {
+                                cantidadPruebas++;
+                            }
                         }
                     }
                 }
             }
-
-            if (matrizMenor5.GetLength(0)==0 )
+            int faltantes = (this.intervalos.Count - prueba);
+            if (faltantes > 0)
             {
-                return matrizz;
-            }
-
-            posicionAcumulada[0, 1] = 0;
-            // armamos una matriz de 1 fila que sea acumulada 
-            for (int i = 0; i < matrizMenor5.GetLength(0); i++)
-            {
-                for (int j = 0; j < 4; j++)
+                if (distro < 2)
                 {
-                    ///aseguro el intervalo inferior 
-                    if (j == 0)
-                    {
-                        posicionAcumulada[0, 0] = matrizMenor5[0, 0];
-                    }
-
-                    if (j == 1)
-                    {
-                        if (posicionAcumulada[0, 1] < matrizMenor5[i, j])
-                        {
-                            posicionAcumulada[0, 1] = matrizMenor5[i, j];
-                        }
-                    }
-
-                    /// sumador de esperadas o observadas
-                    if (j == 2 || j == 3)
-                    {
-                        posicionAcumulada[0, j] += matrizMenor5[i, j];
-                    }
+                    reducidos[reducidos.Count - 1].fusionarIntervalo(aux[intervalos.Count - faltantes]);
                 }
-            }
-
-
-
-
-
-            if (posicionAcumulada[0,2]< 5)
-            {
-                for (int i = 0; i < matrizz.GetLength(0); i++)
+                else
                 {
-                    for (int j = 0; j < 4; j++)
-                    {
-                        if (j==0 )
-                        {
-                            posicionAcumulada[i, j] = posicionAnterior[i, j];
-                        }
-
-                        if (j==2 || j ==3)
-                        {
-                            posicionAcumulada[i, j] += posicionAnterior[i, j];
-                        }
-                    }
-                       
+                    ((ValorPoisson)reducidos[reducidos.Count - 1]).fusionarIntervalo(aux[intervalos.Count - faltantes]);
                 }
-            }
-
-
-            bool BRfilaInicio = false;
-            bool BRfilafin = false;
-            
-
-
-            for (int i = 0; i < matrizz.GetLength(0); i++)
-            {
-                    for (int j = 0; j < 4; j++)
-                    {
-                        if (BRfilafin == false)
-                          {
-
-
-                            if (j == 0)
-                        {
-                            if (matrizz[i, j] == posicionAcumulada[i, j])
-                            {
-                                retorno[i, j] = posicionAcumulada[i, j];
-                                BRfilaInicio = true;
-                            }
-                            else
-                            {
-                                retorno[i, j] = matrizz[i, j];
-                            }
-                        }
-                            if (j == 1 || j == 2)
-                        {
-                            if (BRfilaInicio)
-                            {
-                                retorno[i, j] = posicionAcumulada[i, j];
-                            }
-                            else
-                            {
-                                retorno[i, j] = matrizz[i, j];
-                            }
-                        }
-
-                            if (j == 3)
-                        {
-                            if (BRfilaInicio)
-                            {
-                                retorno[i, j] = posicionAcumulada[i, j];
-                                BRfilafin = true;
-                            }
-                            else
-                            {
-                                retorno[i, j] = matrizz[i, j];
-                            }
-                        }
-                          }
-                        else
-                        {
-                            return retorno;
-                            break; //????????????
-                        }
-                    }
 
             }
 
-            return retorno;
+            return reducidos;
+        }
+
+        public void fusionarIntervalo(Intervalo i)
+        {
+
+            LimInf = (this.limInf < i.limInf) ? this.limInf : i.limInf;
+            limSup = (this.limSup > i.limSup) ? this.limSup : i.limSup;
+
+
+            this.frecuenciaAbsoluta += i.frecuenciaAbsoluta;
+            this.frecuenciaEsperada += i.frecuenciaEsperada;
+        }
+
+        public void fusionarIntervalo(Intervalo i)
+        {
+            ValorPoisson valor = (ValorPoisson)i;
+            frecuenciaAbsoluta += valor.frecuenciaAbsoluta;
+            frecuenciaEsperada += valor.frecuenciaEsperada;
+
+            this.titulo = titulo + ", " + ((ValorPoisson)i).valor;
 
         }
 
-
-
-
-
-
+        */
 
         public double[,] PruebaChi(double[,] matrizFoFe)
         {
 
             double[,] matrizChi = new double[matrizFoFe.GetLength(0), 5];
-            double[,] Analizar = matrizFoFe;
+            double[,] Analizar = acumularMatriz(matrizFoFe);
 
             for (int i = 0; i < Analizar.GetLength(0); i++)
             {
 
                 for (int j = 0; j < 6; j++)
                 {
-                    if (j <= 3 )
+                    if (j <= 3)
                     {
-                        matrizChi[i, j] = Analizar[i,j];
+                        matrizChi[i, j] = Analizar[i, j];
                     }
 
-                    if (j == 4) /// cambiar tengo el acumulado 
+                    if (j == 4)
                     {
                         matrizChi[i, j] = (Math.Pow((Analizar[i, 2] - Analizar[i, 3]), 2)) / Analizar[i, 3];
 
@@ -305,7 +240,6 @@ namespace GeneradorAleatorio.Contador
             return matrizChi;
         }
 
-
         //Método KS
         public double PruebaKS(double[,] matriz, int n)
         {
@@ -314,37 +248,37 @@ namespace GeneradorAleatorio.Contador
 
             for (int i = 0; i < matrizKS.GetLength(0); i++)
             {
-                for(int j = 0; j < 6; j++)
+                for (int j = 0; j < 6; j++)
                 {
-                    if(j == 0)
+                    if (j == 0)
                     {
                         //Cálculo de probabilidad observada
                         matrizKS[i, j] = matriz[i, 2] / n;
                     }
-                    if(j == 1)
+                    if (j == 1)
                     {
                         //Cálculo de probabilidad esperada
                         matrizKS[i, j] = matriz[i, 3] / n;
 
                     }
-                    if(j == 2)
+                    if (j == 2)
                     {
                         //Cálculo de probabilidad observada acumulada
-                        matrizKS[i,j] += matrizKS[i, 0];
+                        matrizKS[i, j] += matrizKS[i, 0];
                     }
-                    if(j == 3)
+                    if (j == 3)
                     {
                         //Cálculo de probabilidad esperada acumulada
                         matrizKS[i, j] += matrizKS[i, 1];
                     }
-                    if(j == 4)
+                    if (j == 4)
                     {
                         //Cálculo de diferencia absoluta entre probabilidades acumuladas
                         matrizKS[i, j] = Math.Abs(matrizKS[i, 2] - matrizKS[i, 3]);
                     }
-                    if(j == 5)
+                    if (j == 5)
                     {
-                        if(valorCalculado < matrizKS[i, 4])
+                        if (valorCalculado < matrizKS[i, 4])
                         {
                             valorCalculado = matrizKS[i, 4];
                         }
@@ -354,6 +288,34 @@ namespace GeneradorAleatorio.Contador
 
             return valorCalculado;
         }
+
+        public double[,] ContarPoisson(List<double> numbers)
+        {
+            // Obtener una lista de números únicos
+            List<double> uniqueNumbers = numbers.Distinct().ToList();
+
+            // Crear la matriz para almacenar los conteos
+            double[,] result = new double[uniqueNumbers.Count, 2];
+
+            // Recorrer los números únicos y contar cuántas veces aparece cada uno en la lista
+            for (int i = 0; i < uniqueNumbers.Count; i++)
+            {
+                int count = 0;
+                for (int j = 0; j < numbers.Count; j++)
+                {
+                    if (uniqueNumbers[i] == numbers[j])
+                    {
+                        count++;
+                    }
+                }
+                result[i, 0] = uniqueNumbers[i];
+                result[i, 1] = count;
+            }
+
+            // Devolver la matriz de conteos
+            return result;
+        }
     }
-}
+} 
+
 
