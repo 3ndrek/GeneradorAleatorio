@@ -18,6 +18,9 @@ namespace GeneradorAleatorio.Pantallas
         private GestorDeCalculos gestorDeCalculos;
 
         int method;
+        bool validations = false;
+        bool empty = false;
+        string error;
         
         public GeneradorNormal(PantallaSeleccionModo pantallaSeleccion)
         {
@@ -91,6 +94,33 @@ namespace GeneradorAleatorio.Pantallas
             }
         }
 
+        private void validationsTest() {
+
+
+            if (inputCant.Text == "" || mediaInput.Text == "" || desviaInput.Text == "")
+            {
+                validations = true;
+                empty = true;
+                error = "Debe rellenar todos los campos";
+            }
+
+            if (validations && (!int.TryParse(inputCant.Text, out _) || !(double.TryParse(mediaInput.Text, out _) || int.TryParse(mediaInput.Text, out _)) || !(double.TryParse(desviaInput.Text, out _) || int.TryParse(desviaInput.Text, out _))))
+            {
+                validations = true;
+                error = "Debe rellenar todos los campos y asegurarse que los mismos sean todos del tipo de dato solicitado";
+            }
+
+            if ((!int.TryParse(inputCant.Text, out _) || !(double.TryParse(mediaInput.Text, out _) || int.TryParse(mediaInput.Text, out _)) || !(double.TryParse(desviaInput.Text, out _) || int.TryParse(desviaInput.Text, out _))) && !empty)
+            {
+                validations = true;
+                error = "Debe asegurarse que los datos sean todos del tipo solicitado";
+            }
+
+
+
+
+        }
+
         private void setChanges(Button name) {
 
             setMethodElementsToVisible();
@@ -120,17 +150,28 @@ namespace GeneradorAleatorio.Pantallas
             // hago lo correspondiente con las clases auxiliares de convolucion. De esta forma separo la capa de presentacion de la logica, llamo a las clases y estas me devuelven todo calculado
             // sin saber como lo hicieron.
 
-        var numeros = 
-                method == 1 ? 
-         (new Box_Muller()).GenerateBoxMuller(float.Parse(mediaInput.Text), float.Parse(desviaInput.Text), Int32.Parse(inputCant.Text)) : 
-         (new Convolucion()).GenerateConvolution(float.Parse(mediaInput.Text), float.Parse(desviaInput.Text), Int32.Parse(inputCant.Text));
+            validationsTest();
+            if (validations == true) {
+                MessageBox.Show(error);
+                validations = false;
+                empty = false;
+            }
+            else
+            {
+                var numeros =
+               method == 1 ?
+        (new Box_Muller()).GenerateBoxMuller(float.Parse(mediaInput.Text), float.Parse(desviaInput.Text), Int32.Parse(inputCant.Text)) :
+        (new Convolucion()).GenerateConvolution(float.Parse(mediaInput.Text), float.Parse(desviaInput.Text), Int32.Parse(inputCant.Text));
 
-            // Seteo variables globales en Program para no tener que andar mandando de archivo en archivo mi media y desviacion, ademas de que si le mando al gestor
-            // la desviacion le rompo el codigo a los que hicieron los otros metodos
-            Program.deviation = float.Parse(desviaInput.Text);
-            Program.mediaN = float.Parse(mediaInput.Text);
+                // Seteo variables globales en Program para no tener que andar mandando de archivo en archivo mi media y desviacion, ademas de que si le mando al gestor
+                // la desviacion le rompo el codigo a los que hicieron los otros metodos
+                Program.deviation = float.Parse(desviaInput.Text);
+                Program.mediaN = float.Parse(mediaInput.Text);
 
-         gestorDeCalculos = new GestorDeCalculos(numeros, 2,double.Parse(mediaInput.Text));
+                gestorDeCalculos = new GestorDeCalculos(numeros, 2, double.Parse(mediaInput.Text));
+            }
+
+       ;
         }
 
         private void btnReset_Click(object sender, EventArgs e)
