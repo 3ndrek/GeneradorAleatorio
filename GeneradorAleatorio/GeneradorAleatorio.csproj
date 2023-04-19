@@ -114,6 +114,9 @@
     <Compile Include="Pantallas\PantallaSeleccionModo.Designer.cs">
       <DependentUpon>PantallaSeleccionModo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pantallas\PruebaButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Pantallas\GeneadorUniforme.resx">

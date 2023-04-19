@@ -8,6 +8,23 @@ namespace GeneradorAleatorio.Contador
 {
     public class Contar
     {
+        private double feChi;
+        private double foChi;
+        private double feChiViejo;
+        private double foChiViejo;
+        private double cAcumViejo;
+        private double cViejo;
+        private double cAcum;
+        private int intervalosChi;
+
+        public Contar()
+        {
+            feChi = 0;
+            foChi = 0;
+            cAcum = 0;
+            intervalosChi = 0;
+        }
+
         private int ContarValoresEnIntervalo(List<Double> numeros, double min, double max)
         {
             int contador = 0;
@@ -117,194 +134,50 @@ namespace GeneradorAleatorio.Contador
         }
 
 
-        private double[,] BusquedaHastaFondo(double[,] matrizz)
+        public double[] PruebaChi(double[,] matrizFoFe)
         {
-            double[,] retorno = new double[matrizz.GetLength(0), 4];
+            double[] chi = new double[2]; 
+            int cantLineas = 0;
 
-
-            double[,] posicionAcumulada = new double[matrizz.GetLength(0), 4];
-            double[,] posicionAnterior = new double[1, 4];
-
-            double[,] matrizMenor5 = new double[matrizz.GetLength(0), 4];
-
-
-
-            // armar matriz de < 5, considerando que no puedan venir intervalos salteados 
-
-            int filaanterior = 0;
-            for (int i = 0; i < matrizz.GetLength(0); i++)
+            for (int i = 0; i < matrizFoFe.GetLength(0); i++)
             {
-                filaanterior++;
-
-                if (matrizz[i, 3] < 5)
-                {
-
-                    for (int j = 0; j < 4; j++)
-                    {
-                        matrizMenor5[i, j] = matrizz[i, j];
-
-                        if (filaanterior == 1)
-                        {
-                            posicionAnterior[0, j] = matrizz[(i - 1), j];
-                        }
-                    }
-                }
+                cantLineas++;
+                calcularCoeficiente(matrizFoFe[i, 2], matrizFoFe[i, 3], cantLineas, matrizFoFe.GetLength(0));
             }
 
-            if (matrizMenor5.GetLength(0) == 0 )
-            {
-                return matrizz;
-            }
+            chi[0] = cAcum; 
+            chi[1] = intervalosChi;
 
-            posicionAcumulada[0, 1] = 0;
-            // armamos una matriz de 1 fila que sea acumulada 
-            for (int i = 0; i < matrizMenor5.GetLength(0); i++)
-            {
-                for (int j = 0; j < 4; j++)
-                {
-                    ///aseguro el intervalo inferior 
-                    if (j == 0)
-                    {
-                        posicionAcumulada[0, 0] = matrizMenor5[0, 0];
-                    }
-
-                    if (j == 1)
-                    {
-                        if (posicionAcumulada[0, 1] < matrizMenor5[i, j])
-                        {
-                            posicionAcumulada[0, 1] = matrizMenor5[i, j];
-                        }
-                    }
-
-                    /// sumador de esperadas o observadas
-                    if (j == 2 || j == 3)
-                    {
-                        posicionAcumulada[0, j] += matrizMenor5[i, j];
-                    }
-                }
-            }
-
-
-
-
-
-            if (posicionAcumulada[0,2]< 5)
-            {
-                for (int i = 0; i < matrizz.GetLength(0); i++)
-                {
-                    for (int j = 0; j < 4; j++)
-                    {
-                        if (j==0 )
-                        {
-                            posicionAcumulada[i, j] = posicionAnterior[i, j];
-                        }
-
-                        if (j==2 || j ==3)
-                        {
-                            posicionAcumulada[i, j] += posicionAnterior[i, j];
-                        }
-                    }
-                       
-                }
-            }
-
-
-            bool BRfilaInicio = false;
-            bool BRfilafin = false;
-            
-
-
-            for (int i = 0; i < matrizz.GetLength(0); i++)
-            {
-                    for (int j = 0; j < 4; j++)
-                    {
-                        if (BRfilafin == false)
-                          {
-
-
-                            if (j == 0)
-                        {
-                            if (matrizz[i, j] == posicionAcumulada[i, j])
-                            {
-                                retorno[i, j] = posicionAcumulada[i, j];
-                                BRfilaInicio = true;
-                            }
-                            else
-                            {
-                                retorno[i, j] = matrizz[i, j];
-                            }
-                        }
-                            if (j == 1 || j == 2)
-                        {
-                            if (BRfilaInicio)
-                            {
-                                retorno[i, j] = posicionAcumulada[i, j];
-                            }
-                            else
-                            {
-                                retorno[i, j] = matrizz[i, j];
-                            }
-                        }
-
-                            if (j == 3)
-                        {
-                            if (BRfilaInicio)
-                            {
-                                retorno[i, j] = posicionAcumulada[i, j];
-                                BRfilafin = true;
-                            }
-                            else
-                            {
-                                retorno[i, j] = matrizz[i, j];
-                            }
-                        }
-                          }
-                        else
-                        {
-                            return retorno;
-                            break; //????????????
-                        }
-                    }
-
-            }
-
-            return retorno;
-
+            return chi;
         }
 
-
-
-
-
-
-
-        public double[,] PruebaChi(double[,] matrizFoFe)
+        private void calcularCoeficiente(double fo, double fe, int cantLineas, int cantIntervalos)
         {
-
-            double[,] matrizChi = new double[matrizFoFe.GetLength(0), 5];
-            double[,] Analizar = matrizFoFe;
-
-            for (int i = 0; i < Analizar.GetLength(0); i++)
+            double c;
+            feChi += fe;
+            foChi += fo;
+            if (feChi >= 5)
             {
-
-                for (int j = 0; j < 6; j++)
-                {
-                    if (j <= 3 )
-                    {
-                        matrizChi[i, j] = Analizar[i,j];
-                    }
-
-                    if (j == 4) /// cambiar tengo el acumulado 
-                    {
-                        matrizChi[i, j] = Math.Truncate(((Math.Pow((Analizar[i, 2] - Analizar[i, 3]), 2)) / Analizar[i, 3]) * 10000) / 10000;
-
-                    }
-                }
+                c = ((Math.Pow((feChi - foChi), 2) / feChi));
+                cAcum += c;
+                intervalosChi++;
+                cAcumViejo = cAcum;
+                feChiViejo = feChi;
+                foChiViejo = foChi;
+                cViejo = c;
+                feChi = 0;
+                foChi = 0;
             }
-
-            return matrizChi;
+            if (cantLineas == cantIntervalos)
+            {
+                c = ((Math.Pow(((feChi + feChiViejo) - (foChi + foChiViejo)), 2) /
+                    (feChi + feChiViejo)));
+                cAcum -= cViejo;
+                cAcum += c;
+                feChi = 0;
+                foChi = 0;
+            }
         }
-
 
         //Método KS
         public double PruebaKS(double[,] matriz, int n)

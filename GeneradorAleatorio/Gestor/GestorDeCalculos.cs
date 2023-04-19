@@ -245,33 +245,14 @@ namespace GeneradorAleatorio.Gestor
             }
             else if (n > 30)
             {
-                double[,] matriz = contador.PruebaChi(matrizCompleta);
-                //Determina el k
-                gradosLibertad = matriz.GetLength(0);
 
-                //Calcula los valores acumulados para comparar con los tabulados
-                valorCalculado = AcumularChi(matriz);
-            }
+                double[] chi = contador.PruebaChi(matrizCompleta);
 
-            return valorCalculado;
-        }
+                //Determinamos el k
+                gradosLibertad = Convert.ToInt32(chi[1]);
+                valorCalculado = chi[0];
 
-
-        public double AcumularChi(double[,] matriz)
-        {
-            double valorCalculado = 0;
-
-            for (int i = 0; i < matriz.GetLength(0); i++)
-            {
                 
-                for (int j = 0; j < 5; j++)
-                {
-
-                    if (j == 4)
-                    {
-                        valorCalculado += matriz[i, j];
-                    }
-                }
             }
 
             return valorCalculado;

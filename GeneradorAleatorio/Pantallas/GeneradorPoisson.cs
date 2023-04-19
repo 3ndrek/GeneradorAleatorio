@@ -26,7 +26,7 @@ namespace GeneradorAleatorio.Pantallas
 
         private void button1_Click(object sender, EventArgs e)
         {
-            gestor = new GestorDeCalculos(GenerarPoisson(), 4);
+            //gestor = new GestorDeCalculos(GenerarPoisson(), 4);
         }
 
         private List<double> GenerarPoisson()

@@ -135,9 +135,32 @@ namespace GeneradorAleatorio.Pantallas
             else if(tamañoMuestra > 30)
             {
                 //Se fija el valor correspondiente en la tabla chi-cuadrado con un alfa=5%
-                if(gradosL <= 50)
+                if(gradosL <= 50 )
                 {
-                    lblValorTabulado.Text = valoresTabuladosChi[gradosL - 1].ToString();
+                    if(gradosL <= 0)
+                    {
+                        System.Windows.Forms.MessageBox.Show("No es posible calcular. Por favor intente otro valor de intervalo");
+                        this.Close();
+                    }
+                    else
+                    {
+                        lblValorTabulado.Text = valoresTabuladosChi[gradosL - 1].ToString();
+                        try
+                        {
+                            if (Double.Parse(lblValorCalculado.Text) <= Double.Parse(lblValorTabulado.Text))
+                            {
+                                lblAceptacion.Text = "Se ACEPTA la hipótesis nula según prueba de Chi-Cuadrado";
+                            }
+                            else
+                            {
+                                lblAceptacion.Text = "No se acepta la hipótesis nula según prueba de Chi-Cuadrado";
+                            }
+                        }
+                        catch
+                        {
+
+                        }
+                    }
                 }
                 else 
                 {
@@ -145,21 +168,7 @@ namespace GeneradorAleatorio.Pantallas
                     this.Close();
                 }
 
-                try
-                {
-                    if (Double.Parse(lblValorCalculado.Text) <= Double.Parse(lblValorTabulado.Text))
-                    {
-                        lblAceptacion.Text = "Se ACEPTA la hipótesis nula según prueba de Chi-Cuadrado";
-                    }
-                    else
-                    {
-                        lblAceptacion.Text = "No se acepta la hipótesis nula según prueba de Chi-Cuadrado";
-                    }
-                }
-                catch
-                {
-
-                }
+                
                 
             }
 
