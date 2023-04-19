@@ -227,6 +227,38 @@ namespace GeneradorAleatorio.Contador
 
             return valorCalculado;
         }
+
+
+        // contar cuantas veces ocurre algo para poisson 
+
+        public double[,] CountOccurrences(List<double> numbers)
+        {
+            // Obtener una lista de números únicos
+            List<double> uniqueNumbers = numbers.Distinct().ToList();
+
+            // Crear la matriz para almacenar los conteos
+            double[,] result = new double[uniqueNumbers.Count, 2];
+
+            // Recorrer los números únicos y contar cuántas veces aparece cada uno en la lista
+            for (int i = 0; i < uniqueNumbers.Count; i++)
+            {
+                double count = 0;
+                for (int j = 0; j < numbers.Count; j++)
+                {
+                    if (uniqueNumbers[i] == numbers[j])
+                    {
+                        count++;
+                    }
+                }
+                result[i, 0] = uniqueNumbers[i];
+                result[i, 1] = count;
+            }
+
+            // Devolver la matriz de conteos
+            return result;
+        }
+
+
     }
 }
 
