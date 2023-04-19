@@ -32,7 +32,7 @@ namespace GeneradorAleatorio.Contador
             double limIntervalo = minimo;
 
 
-            double ancho = ((maximo - minimo) / intervalos)+ 0.0001 ;
+            double ancho = ((maximo - minimo) / intervalos) + 0.0001 ;
             double[,] retorno = new double[intervalos, 3];
             // selecciona fila 
 
@@ -123,7 +123,7 @@ namespace GeneradorAleatorio.Contador
 
 
             double[,] posicionAcumulada = new double[matrizz.GetLength(0), 4];
-            double[,] posicionAnterior = new double[matrizz.GetLength(0), 4];
+            double[,] posicionAnterior = new double[1, 4];
 
             double[,] matrizMenor5 = new double[matrizz.GetLength(0), 4];
 
@@ -145,13 +145,13 @@ namespace GeneradorAleatorio.Contador
 
                         if (filaanterior == 1)
                         {
-                            posicionAnterior[1, j] = matrizz[(i - 1), j];
+                            posicionAnterior[0, j] = matrizz[(i - 1), j];
                         }
                     }
                 }
             }
 
-            if (matrizMenor5.GetLength(0)==0 )
+            if (matrizMenor5.GetLength(0) == 0 )
             {
                 return matrizz;
             }
@@ -296,7 +296,7 @@ namespace GeneradorAleatorio.Contador
 
                     if (j == 4) /// cambiar tengo el acumulado 
                     {
-                        matrizChi[i, j] = (Math.Pow((Analizar[i, 2] - Analizar[i, 3]), 2)) / Analizar[i, 3];
+                        matrizChi[i, j] = Math.Truncate(((Math.Pow((Analizar[i, 2] - Analizar[i, 3]), 2)) / Analizar[i, 3]) * 10000) / 10000;
 
                     }
                 }

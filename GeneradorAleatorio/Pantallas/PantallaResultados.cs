@@ -35,7 +35,7 @@ namespace GeneradorAleatorio.Pantallas
             foreach (Double i in numerosRandom)
             {
 
-                DvgArreglo.Rows.Add( Math.Round(i,4));  
+                DvgArreglo.Rows.Add( Math.Truncate(i * 10000)/10000);  
             }
         }
 

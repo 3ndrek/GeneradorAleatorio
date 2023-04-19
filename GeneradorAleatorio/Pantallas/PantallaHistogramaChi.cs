@@ -30,7 +30,7 @@ namespace GeneradorAleatorio.Pantallas
             InitializeComponent();
             frecuencia0 = frecuenciaObservada;
             tamañoMuestra = tamaño;
-            valorCalc = valorCalculado;
+            valorCalc = Math.Truncate(valorCalculado * 10000)/10000;
             gradosL = gradosLibertad;
             cargarMatrizDGV();
         }
@@ -42,7 +42,7 @@ namespace GeneradorAleatorio.Pantallas
 
             for (int i = 0; i < frecuencia0.GetLength(0); i++)
             {
-                DataGVCHI.Rows.Add(frecuencia0[i, 0], frecuencia0[i, 1], frecuencia0[i, 2], frecuencia0[i, 3]);
+                DataGVCHI.Rows.Add(Math.Truncate(frecuencia0[i, 0]*10000)/10000, Math.Truncate(frecuencia0[i, 1]*10000)/10000, Math.Truncate(frecuencia0[i, 2]*10000)/10000, Math.Truncate(frecuencia0[i, 3]*10000)/10000);
             }
         }
 
@@ -93,8 +93,8 @@ namespace GeneradorAleatorio.Pantallas
             // Ajustar las propiedades de la serie y del Chart
             Histograma1.Series["Frecuencia Observada"].Color = Color.Aqua;
             Histograma1.Series["Frecuencia Observada"].BorderWidth = 6 ;
-            Histograma1.ChartAreas[0].AxisX.Interval = intervalosSuperiores[1] - intervalosInferiores[1];
-            Histograma1.ChartAreas[0].AxisX.Minimum = intervalosInferiores[0];
+            Histograma1.ChartAreas[0].AxisX.Interval = Math.Truncate((intervalosSuperiores[1] - intervalosInferiores[1])*10000)/10000;
+            Histograma1.ChartAreas[0].AxisX.Minimum = Math.Truncate(intervalosInferiores[0]*10000)/10000;
             //Histograma1.ChartAreas[0].AxisX.Maximum = intervalosSuperiores[intervalosSuperiores.Length - 1];
             Histograma1.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.LightGray;
             Histograma1.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.LightGray;
@@ -135,15 +135,16 @@ namespace GeneradorAleatorio.Pantallas
             else if(tamañoMuestra > 30)
             {
                 //Se fija el valor correspondiente en la tabla chi-cuadrado con un alfa=5%
-                if(gradosL <= 30)
+                if(gradosL <= 50)
                 {
                     lblValorTabulado.Text = valoresTabuladosChi[gradosL - 1].ToString();
                 }
-                else if(gradosL > 50) 
+                else 
                 {
                     System.Windows.Forms.MessageBox.Show("No es posible calcular. Por favor intente otro valor de intervalo");
                     this.Close();
                 }
+
                 try
                 {
                     if (Double.Parse(lblValorCalculado.Text) <= Double.Parse(lblValorTabulado.Text))
