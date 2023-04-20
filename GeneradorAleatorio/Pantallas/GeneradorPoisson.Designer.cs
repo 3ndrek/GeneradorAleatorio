@@ -135,7 +135,7 @@
             this.Controls.Add(this.txtLambda);
             this.Name = "GeneradorPoisson";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "A";
+            this.Text = "Generador Poisson";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GeneradorPoisson_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -44,10 +44,10 @@
             // mediaInput
             // 
             this.mediaInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mediaInput.Location = new System.Drawing.Point(574, 230);
-            this.mediaInput.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.mediaInput.Location = new System.Drawing.Point(430, 187);
+            this.mediaInput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.mediaInput.Name = "mediaInput";
-            this.mediaInput.Size = new System.Drawing.Size(216, 30);
+            this.mediaInput.Size = new System.Drawing.Size(163, 26);
             this.mediaInput.TabIndex = 0;
             this.mediaInput.Visible = false;
             // 
@@ -57,9 +57,10 @@
             this.mediaLabel.BackColor = System.Drawing.Color.Transparent;
             this.mediaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mediaLabel.ForeColor = System.Drawing.Color.DimGray;
-            this.mediaLabel.Location = new System.Drawing.Point(183, 231);
+            this.mediaLabel.Location = new System.Drawing.Point(137, 188);
+            this.mediaLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.mediaLabel.Name = "mediaLabel";
-            this.mediaLabel.Size = new System.Drawing.Size(192, 29);
+            this.mediaLabel.Size = new System.Drawing.Size(149, 24);
             this.mediaLabel.TabIndex = 2;
             this.mediaLabel.Text = "Ingrese la media";
             this.mediaLabel.Visible = false;
@@ -69,10 +70,10 @@
             this.btnGenerar.BackColor = System.Drawing.Color.Coral;
             this.btnGenerar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGenerar.ForeColor = System.Drawing.Color.Transparent;
-            this.btnGenerar.Location = new System.Drawing.Point(188, 415);
-            this.btnGenerar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnGenerar.Location = new System.Drawing.Point(141, 337);
+            this.btnGenerar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnGenerar.Name = "btnGenerar";
-            this.btnGenerar.Size = new System.Drawing.Size(602, 54);
+            this.btnGenerar.Size = new System.Drawing.Size(452, 44);
             this.btnGenerar.TabIndex = 4;
             this.btnGenerar.Text = "Generar";
             this.btnGenerar.UseVisualStyleBackColor = false;
@@ -84,9 +85,10 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DimGray;
-            this.label3.Location = new System.Drawing.Point(342, 26);
+            this.label3.Location = new System.Drawing.Point(256, 21);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(298, 36);
+            this.label3.Size = new System.Drawing.Size(248, 29);
             this.label3.TabIndex = 5;
             this.label3.Text = "Seleccione el método";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -97,9 +99,10 @@
             this.btnMuller.BackColor = System.Drawing.Color.Coral;
             this.btnMuller.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMuller.ForeColor = System.Drawing.Color.Transparent;
-            this.btnMuller.Location = new System.Drawing.Point(186, 93);
+            this.btnMuller.Location = new System.Drawing.Point(140, 76);
+            this.btnMuller.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnMuller.Name = "btnMuller";
-            this.btnMuller.Size = new System.Drawing.Size(216, 59);
+            this.btnMuller.Size = new System.Drawing.Size(162, 48);
             this.btnMuller.TabIndex = 6;
             this.btnMuller.Text = " Box-Muller";
             this.btnMuller.UseVisualStyleBackColor = false;
@@ -111,9 +114,10 @@
             this.btnConvolucion.BackColor = System.Drawing.Color.Coral;
             this.btnConvolucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConvolucion.ForeColor = System.Drawing.Color.Transparent;
-            this.btnConvolucion.Location = new System.Drawing.Point(574, 93);
+            this.btnConvolucion.Location = new System.Drawing.Point(430, 76);
+            this.btnConvolucion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnConvolucion.Name = "btnConvolucion";
-            this.btnConvolucion.Size = new System.Drawing.Size(216, 59);
+            this.btnConvolucion.Size = new System.Drawing.Size(162, 48);
             this.btnConvolucion.TabIndex = 7;
             this.btnConvolucion.Text = "Convolución";
             this.btnConvolucion.UseVisualStyleBackColor = false;
@@ -124,9 +128,10 @@
             this.desviaLabel.AutoSize = true;
             this.desviaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.desviaLabel.ForeColor = System.Drawing.Color.DimGray;
-            this.desviaLabel.Location = new System.Drawing.Point(181, 291);
+            this.desviaLabel.Location = new System.Drawing.Point(136, 236);
+            this.desviaLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.desviaLabel.Name = "desviaLabel";
-            this.desviaLabel.Size = new System.Drawing.Size(339, 29);
+            this.desviaLabel.Size = new System.Drawing.Size(264, 24);
             this.desviaLabel.TabIndex = 8;
             this.desviaLabel.Text = "Ingrese la desviacion estandar";
             this.desviaLabel.Visible = false;
@@ -134,10 +139,10 @@
             // desviaInput
             // 
             this.desviaInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.desviaInput.Location = new System.Drawing.Point(574, 291);
-            this.desviaInput.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.desviaInput.Location = new System.Drawing.Point(430, 236);
+            this.desviaInput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.desviaInput.Name = "desviaInput";
-            this.desviaInput.Size = new System.Drawing.Size(216, 30);
+            this.desviaInput.Size = new System.Drawing.Size(163, 26);
             this.desviaInput.TabIndex = 9;
             this.desviaInput.Visible = false;
             // 
@@ -146,9 +151,10 @@
             this.labelCant.AutoSize = true;
             this.labelCant.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCant.ForeColor = System.Drawing.Color.DimGray;
-            this.labelCant.Location = new System.Drawing.Point(181, 348);
+            this.labelCant.Location = new System.Drawing.Point(136, 283);
+            this.labelCant.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelCant.Name = "labelCant";
-            this.labelCant.Size = new System.Drawing.Size(334, 29);
+            this.labelCant.Size = new System.Drawing.Size(260, 24);
             this.labelCant.TabIndex = 10;
             this.labelCant.Text = "Ingrese la cantidad de valores";
             this.labelCant.Visible = false;
@@ -156,10 +162,10 @@
             // inputCant
             // 
             this.inputCant.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inputCant.Location = new System.Drawing.Point(574, 348);
-            this.inputCant.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.inputCant.Location = new System.Drawing.Point(430, 283);
+            this.inputCant.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.inputCant.Name = "inputCant";
-            this.inputCant.Size = new System.Drawing.Size(216, 30);
+            this.inputCant.Size = new System.Drawing.Size(163, 26);
             this.inputCant.TabIndex = 11;
             this.inputCant.Visible = false;
             // 
@@ -169,9 +175,10 @@
             this.btnReset.BackColor = System.Drawing.Color.Coral;
             this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReset.ForeColor = System.Drawing.Color.Transparent;
-            this.btnReset.Location = new System.Drawing.Point(574, 506);
+            this.btnReset.Location = new System.Drawing.Point(430, 411);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(216, 59);
+            this.btnReset.Size = new System.Drawing.Size(162, 48);
             this.btnReset.TabIndex = 12;
             this.btnReset.Text = "Reiniciar";
             this.btnReset.UseVisualStyleBackColor = false;
@@ -180,10 +187,10 @@
             // 
             // GeneradorNormal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(981, 604);
+            this.ClientSize = new System.Drawing.Size(736, 491);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.inputCant);
             this.Controls.Add(this.labelCant);
@@ -195,10 +202,10 @@
             this.Controls.Add(this.btnGenerar);
             this.Controls.Add(this.mediaLabel);
             this.Controls.Add(this.mediaInput);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "GeneradorNormal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "GeneradorNormal";
+            this.Text = "Generador Normal";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GeneradorNormal_FormClosing);
             this.Load += new System.EventHandler(this.GeneradorNormal_Load);
             this.ResumeLayout(false);
