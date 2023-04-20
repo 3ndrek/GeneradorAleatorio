@@ -41,27 +41,43 @@ namespace GeneradorAleatorio.Pantallas
             }
         }
 
+
+        public void MostrarPuntos(double[,] matriz,Chart chart1)
+        {
+            
+            
+                chart1.Series.Clear();
+                chart1.Series.Add("Serie1");
+            chart1.ChartAreas[0].AxisX.Interval = 1; // Espacio entre las etiquetas del eje X
+            chart1.ChartAreas[0].AxisX.LabelStyle.Angle = 0; // Ángulo de las etiquetas del eje X
+            chart1.ChartAreas[0].AxisX.MajorGrid.Enabled = false; // Ocultar las líneas de la cuadrícula principal del eje X
+
+
+
+            for (int i = 0; i < matriz.GetLength(0); i++)
+                {
+                double x = Double.Parse(matriz[i, 0].ToString());
+                double y = matriz[i, 2];
+                chart1.Series["Serie1"].Points.Add(y);
+                chart1.Series["Serie1"].Points[i].Color = Color.Green;
+
+                chart1.Series["Serie1"].Points[i].AxisLabel = x.ToString();
+                chart1.Series["Serie1"].Points[i].Label = y.ToString();
+
+
+            }
+            
+        }
+
+
+
+
+
+
         private void PantallaResultadoPoisson_Load(object sender, EventArgs e)
         {
-            Histograma1.Series.Add("Frecuencia Observada");
-            Histograma1.Series["Frecuencia Observada"].ChartType = SeriesChartType.Column;
 
-            // Asignar los nombres a los ejes X e Y del Chart
-            Histograma1.ChartAreas[0].AxisX.Title = "Intervalos";
-            Histograma1.ChartAreas[0].AxisY.Title = "Frecuencia Observada";
-
-            // Ajustar las propiedades de la serie y del Chart
-            Histograma1.Series["Frecuencia Observada"].Color = Color.Aqua;
-            Histograma1.Series["Frecuencia Observada"].BorderWidth = 6;
-            
-            Histograma1.ChartAreas[0].AxisX.Minimum = Math.Truncate(frecuencia0[0,0] * 10000) / 10000;
-
-            Histograma1.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.LightGray;
-            Histograma1.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.LightGray;
-
-            //Envía a la pantalla los valores calculados y tabulados de ks o chi
-            lblValorCalculado.Text = valorCalc.ToString();
-
+            MostrarPuntos(frecuencia0, Histograma1);
            
 
            
