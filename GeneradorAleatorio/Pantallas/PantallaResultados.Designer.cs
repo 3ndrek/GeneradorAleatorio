@@ -95,7 +95,7 @@
             this.Controls.Add(this.DvgArreglo);
             this.Name = "PantallaResultados";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PantallaResultados";
+            this.Text = "Pantalla de Resultados";
             this.Load += new System.EventHandler(this.PantallaResultados_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DvgArreglo)).EndInit();
             this.ResumeLayout(false);
