@@ -29,35 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeneradorExponencial));
-            this.txtMedia = new System.Windows.Forms.TextBox();
-            this.txtCantValores = new System.Windows.Forms.TextBox();
             this.mediaLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.BtnGenerar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.txtMedia = new GeneradorAleatorio.Pantallas.PruebaInput();
+            this.txtCantValores = new GeneradorAleatorio.Pantallas.PruebaInput();
             this.SuspendLayout();
-            // 
-            // txtMedia
-            // 
-            this.txtMedia.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMedia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMedia.Location = new System.Drawing.Point(430, 118);
-            this.txtMedia.Name = "txtMedia";
-            this.txtMedia.Size = new System.Drawing.Size(163, 26);
-            this.txtMedia.TabIndex = 1;
-            // 
-            // txtCantValores
-            // 
-            this.txtCantValores.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCantValores.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCantValores.Location = new System.Drawing.Point(430, 190);
-            this.txtCantValores.Name = "txtCantValores";
-            this.txtCantValores.Size = new System.Drawing.Size(163, 26);
-            this.txtCantValores.TabIndex = 2;
             // 
             // mediaLabel
             // 
@@ -67,11 +45,10 @@
             this.mediaLabel.AutoSize = true;
             this.mediaLabel.BackColor = System.Drawing.Color.Transparent;
             this.mediaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mediaLabel.ForeColor = System.Drawing.Color.DimGray;
-            this.mediaLabel.Location = new System.Drawing.Point(137, 119);
-            this.mediaLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.mediaLabel.ForeColor = System.Drawing.Color.Silver;
+            this.mediaLabel.Location = new System.Drawing.Point(206, 183);
             this.mediaLabel.Name = "mediaLabel";
-            this.mediaLabel.Size = new System.Drawing.Size(241, 24);
+            this.mediaLabel.Size = new System.Drawing.Size(361, 32);
             this.mediaLabel.TabIndex = 6;
             this.mediaLabel.Text = "Ingrese el valor de la media";
             // 
@@ -83,11 +60,10 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DimGray;
-            this.label1.Location = new System.Drawing.Point(137, 192);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.ForeColor = System.Drawing.Color.Silver;
+            this.label1.Location = new System.Drawing.Point(206, 295);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(278, 24);
+            this.label1.Size = new System.Drawing.Size(418, 32);
             this.label1.TabIndex = 7;
             this.label1.Text = "Ingrese el tamaño de la muestra";
             // 
@@ -97,12 +73,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnGenerar.BackColor = System.Drawing.Color.Coral;
+            this.BtnGenerar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnGenerar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnGenerar.ForeColor = System.Drawing.Color.Transparent;
-            this.BtnGenerar.Location = new System.Drawing.Point(141, 280);
-            this.BtnGenerar.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnGenerar.Location = new System.Drawing.Point(212, 431);
             this.BtnGenerar.Name = "BtnGenerar";
-            this.BtnGenerar.Size = new System.Drawing.Size(452, 44);
+            this.BtnGenerar.Size = new System.Drawing.Size(678, 68);
             this.BtnGenerar.TabIndex = 3;
             this.BtnGenerar.Text = "Generar";
             this.BtnGenerar.UseVisualStyleBackColor = false;
@@ -115,26 +91,65 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.DimGray;
-            this.label3.Location = new System.Drawing.Point(240, 21);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.ForeColor = System.Drawing.Color.Silver;
+            this.label3.Location = new System.Drawing.Point(360, 32);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(278, 29);
+            this.label3.Size = new System.Drawing.Size(411, 40);
             this.label3.TabIndex = 9;
             this.label3.Text = "Distribución Exponencial";
             // 
+            // txtMedia
+            // 
+            this.txtMedia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(36)))), ((int)(((byte)(76)))));
+            this.txtMedia.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.txtMedia.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txtMedia.BorderSize = 2;
+            this.txtMedia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMedia.ForeColor = System.Drawing.Color.Black;
+            this.txtMedia.Location = new System.Drawing.Point(644, 183);
+            this.txtMedia.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMedia.Multiline = false;
+            this.txtMedia.Name = "txtMedia";
+            this.txtMedia.Padding = new System.Windows.Forms.Padding(7);
+            this.txtMedia.PasswordChar = false;
+            this.txtMedia.Size = new System.Drawing.Size(246, 39);
+            this.txtMedia.TabIndex = 1;
+            this.txtMedia.Texts = "";
+            this.txtMedia.UnderlinedStyle = false;
+            // 
+            // txtCantValores
+            // 
+            this.txtCantValores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(36)))), ((int)(((byte)(76)))));
+            this.txtCantValores.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.txtCantValores.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txtCantValores.BorderSize = 2;
+            this.txtCantValores.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCantValores.ForeColor = System.Drawing.Color.Black;
+            this.txtCantValores.Location = new System.Drawing.Point(644, 295);
+            this.txtCantValores.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCantValores.Multiline = false;
+            this.txtCantValores.Name = "txtCantValores";
+            this.txtCantValores.Padding = new System.Windows.Forms.Padding(7);
+            this.txtCantValores.PasswordChar = false;
+            this.txtCantValores.Size = new System.Drawing.Size(246, 39);
+            this.txtCantValores.TabIndex = 10;
+            this.txtCantValores.Texts = "";
+            this.txtCantValores.UnderlinedStyle = false;
+            // 
             // GeneradorExponencial
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(736, 491);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(36)))), ((int)(((byte)(76)))));
+            this.ClientSize = new System.Drawing.Size(1104, 755);
+            this.Controls.Add(this.txtCantValores);
+            this.Controls.Add(this.txtMedia);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.BtnGenerar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.mediaLabel);
-            this.Controls.Add(this.txtCantValores);
-            this.Controls.Add(this.txtMedia);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "GeneradorExponencial";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Generador Exponencial";
@@ -145,11 +160,11 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox txtMedia;
-        private System.Windows.Forms.TextBox txtCantValores;
         private System.Windows.Forms.Label mediaLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BtnGenerar;
         private System.Windows.Forms.Label label3;
+        private PruebaInput txtMedia;
+        private PruebaInput txtCantValores;
     }
 }

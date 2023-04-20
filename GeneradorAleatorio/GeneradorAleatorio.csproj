@@ -123,6 +123,12 @@
     <Compile Include="Pantallas\PruebaButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Pantallas\PruebaInput.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pantallas\PruebaInput.Designer.cs">
+      <DependentUpon>PruebaInput.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Pantallas\GeneadorUniforme.resx">
@@ -148,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\PantallaSeleccionModo.resx">
       <DependentUpon>PantallaSeleccionModo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\PruebaInput.resx">
+      <DependentUpon>PruebaInput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

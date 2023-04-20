@@ -54,9 +54,9 @@ namespace GeneradorAleatorio.Pantallas
             {
                 try
                 {
-                    if (TxtIntervalos.Text != "")
+                    if (TxtIntervalos.Texts != "")
                     {
-                        int inter = Int32.Parse(TxtIntervalos.Text);
+                        int inter = Int32.Parse(TxtIntervalos.Texts);
                         gestor.asignarIntervalos(inter);
                     }
 
@@ -70,7 +70,7 @@ namespace GeneradorAleatorio.Pantallas
             {
                 try
                 {
-                    if (TxtIntervalos.Text == "")
+                    if (TxtIntervalos.Texts == "")
                     {
                         gestor.asignarIntervalos(1);
                     }

@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeneradorPoisson));
             this.label3 = new System.Windows.Forms.Label();
             this.btnPoisson = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.mediaLabel = new System.Windows.Forms.Label();
-            this.txtMuestra = new System.Windows.Forms.TextBox();
-            this.txtLambda = new System.Windows.Forms.TextBox();
+            this.txtLambda = new GeneradorAleatorio.Pantallas.PruebaInput();
+            this.txtMuestra = new GeneradorAleatorio.Pantallas.PruebaInput();
             this.SuspendLayout();
             // 
             // label3
@@ -43,11 +44,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.DimGray;
-            this.label3.Location = new System.Drawing.Point(241, 33);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.ForeColor = System.Drawing.Color.Silver;
+            this.label3.Location = new System.Drawing.Point(362, 51);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(233, 29);
+            this.label3.Size = new System.Drawing.Size(343, 40);
             this.label3.TabIndex = 15;
             this.label3.Text = "Distribución Poisson";
             // 
@@ -57,12 +57,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPoisson.BackColor = System.Drawing.Color.Coral;
+            this.btnPoisson.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPoisson.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPoisson.ForeColor = System.Drawing.Color.Transparent;
-            this.btnPoisson.Location = new System.Drawing.Point(142, 292);
-            this.btnPoisson.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPoisson.Location = new System.Drawing.Point(213, 449);
             this.btnPoisson.Name = "btnPoisson";
-            this.btnPoisson.Size = new System.Drawing.Size(452, 44);
+            this.btnPoisson.Size = new System.Drawing.Size(678, 68);
             this.btnPoisson.TabIndex = 12;
             this.btnPoisson.Text = "Generar";
             this.btnPoisson.UseVisualStyleBackColor = false;
@@ -76,11 +76,10 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.DimGray;
-            this.label4.Location = new System.Drawing.Point(138, 204);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.ForeColor = System.Drawing.Color.Silver;
+            this.label4.Location = new System.Drawing.Point(207, 314);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(278, 24);
+            this.label4.Size = new System.Drawing.Size(418, 32);
             this.label4.TabIndex = 14;
             this.label4.Text = "Ingrese el tamaño de la muestra";
             // 
@@ -92,47 +91,65 @@
             this.mediaLabel.AutoSize = true;
             this.mediaLabel.BackColor = System.Drawing.Color.Transparent;
             this.mediaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mediaLabel.ForeColor = System.Drawing.Color.DimGray;
-            this.mediaLabel.Location = new System.Drawing.Point(138, 131);
-            this.mediaLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.mediaLabel.ForeColor = System.Drawing.Color.Silver;
+            this.mediaLabel.Location = new System.Drawing.Point(207, 202);
             this.mediaLabel.Name = "mediaLabel";
-            this.mediaLabel.Size = new System.Drawing.Size(238, 24);
+            this.mediaLabel.Size = new System.Drawing.Size(356, 32);
             this.mediaLabel.TabIndex = 13;
             this.mediaLabel.Text = "Ingrese el valor de Lambda";
             // 
-            // txtMuestra
-            // 
-            this.txtMuestra.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMuestra.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMuestra.Location = new System.Drawing.Point(431, 202);
-            this.txtMuestra.Name = "txtMuestra";
-            this.txtMuestra.Size = new System.Drawing.Size(163, 26);
-            this.txtMuestra.TabIndex = 11;
-            // 
             // txtLambda
             // 
-            this.txtLambda.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLambda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLambda.Location = new System.Drawing.Point(431, 130);
+            this.txtLambda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(36)))), ((int)(((byte)(76)))));
+            this.txtLambda.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.txtLambda.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txtLambda.BorderSize = 2;
+            this.txtLambda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLambda.ForeColor = System.Drawing.Color.Black;
+            this.txtLambda.Location = new System.Drawing.Point(646, 202);
+            this.txtLambda.Margin = new System.Windows.Forms.Padding(4);
+            this.txtLambda.Multiline = false;
             this.txtLambda.Name = "txtLambda";
-            this.txtLambda.Size = new System.Drawing.Size(163, 26);
-            this.txtLambda.TabIndex = 10;
+            this.txtLambda.Padding = new System.Windows.Forms.Padding(7);
+            this.txtLambda.PasswordChar = false;
+            this.txtLambda.Size = new System.Drawing.Size(246, 39);
+            this.txtLambda.TabIndex = 1;
+            this.txtLambda.Texts = "";
+            this.txtLambda.UnderlinedStyle = false;
+            // 
+            // txtMuestra
+            // 
+            this.txtMuestra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(36)))), ((int)(((byte)(76)))));
+            this.txtMuestra.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.txtMuestra.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txtMuestra.BorderSize = 2;
+            this.txtMuestra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMuestra.ForeColor = System.Drawing.Color.Black;
+            this.txtMuestra.Location = new System.Drawing.Point(646, 307);
+            this.txtMuestra.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMuestra.Multiline = false;
+            this.txtMuestra.Name = "txtMuestra";
+            this.txtMuestra.Padding = new System.Windows.Forms.Padding(7);
+            this.txtMuestra.PasswordChar = false;
+            this.txtMuestra.Size = new System.Drawing.Size(246, 39);
+            this.txtMuestra.TabIndex = 2;
+            this.txtMuestra.Texts = "";
+            this.txtMuestra.UnderlinedStyle = false;
             // 
             // GeneradorPoisson
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(736, 491);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(36)))), ((int)(((byte)(76)))));
+            this.ClientSize = new System.Drawing.Size(1104, 755);
+            this.Controls.Add(this.txtMuestra);
+            this.Controls.Add(this.txtLambda);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnPoisson);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.mediaLabel);
-            this.Controls.Add(this.txtMuestra);
-            this.Controls.Add(this.txtLambda);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "GeneradorPoisson";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Generador Poisson";
@@ -147,7 +164,7 @@
         private System.Windows.Forms.Button btnPoisson;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label mediaLabel;
-        private System.Windows.Forms.TextBox txtMuestra;
-        private System.Windows.Forms.TextBox txtLambda;
+        private PruebaInput txtLambda;
+        private PruebaInput txtMuestra;
     }
 }

@@ -51,8 +51,8 @@ namespace GeneradorAleatorio.Pantallas
         {
             try
             {
-                numerosAGenerar = Int32.Parse(txtCantValores.Text);
-                media = Double.Parse(txtMedia.Text);
+                numerosAGenerar = Int32.Parse(txtCantValores.Texts);
+                media = Double.Parse(txtMedia.Texts);
                 if (media <= 0)
                 {
                     MessageBox.Show("No se puede ingresar ese valor. Pruebe con una media positiva");

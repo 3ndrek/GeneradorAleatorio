@@ -27,7 +27,7 @@ namespace GeneradorAleatorio.Pantallas
         private void button1_Click(object sender, EventArgs e)
         {
             gestor = new GestorDeCalculos(GenerarPoisson(), 4, 0);
-            double lambda = Convert.ToDouble(txtLambda.Text);
+            double lambda = Convert.ToDouble(txtLambda.Texts);
             gestor.Plambda = lambda;
         }
 
@@ -35,8 +35,8 @@ namespace GeneradorAleatorio.Pantallas
         {
             // Convierto los inputs en numeros
 
-            double lambda = Convert.ToDouble(txtLambda.Text);
-            int muestra = Convert.ToInt32(txtMuestra.Text);
+            double lambda = Convert.ToDouble(txtLambda.Texts);
+            int muestra = Convert.ToInt32(txtMuestra.Texts);
 
             double exp = Math.Exp(-lambda);
             double nroGenerado;

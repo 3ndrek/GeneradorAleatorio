@@ -55,9 +55,9 @@ namespace GeneradorAleatorio.Pantallas
             inputCant.Visible = false;
             btnReset.Visible = false;
 
-            mediaInput.Text = "";
-            desviaInput.Text = "";
-            inputCant.Text = "";
+            mediaInput.Texts = "";
+            desviaInput.Texts = "";
+            inputCant.Texts = "";
 
             btnMuller.Visible = true;
             btnConvolucion.Visible = true;
@@ -97,20 +97,20 @@ namespace GeneradorAleatorio.Pantallas
         private void validationsTest() {
 
 
-            if (inputCant.Text == "" || mediaInput.Text == "" || desviaInput.Text == "")
+            if (inputCant.Texts == "" || mediaInput.Texts == "" || desviaInput.Texts == "")
             {
                 validations = true;
                 empty = true;
                 error = "Debe rellenar todos los campos";
             }
 
-            if (validations && (!int.TryParse(inputCant.Text, out _) || !(double.TryParse(mediaInput.Text, out _) || int.TryParse(mediaInput.Text, out _)) || !(double.TryParse(desviaInput.Text, out _) || int.TryParse(desviaInput.Text, out _))))
+            if (validations && (!int.TryParse(inputCant.Texts, out _) || !(double.TryParse(mediaInput.Texts, out _) || int.TryParse(mediaInput.Texts, out _)) || !(double.TryParse(desviaInput.Texts, out _) || int.TryParse(desviaInput.Texts, out _))))
             {
                 validations = true;
                 error = "Debe rellenar todos los campos y asegurarse que los mismos sean todos del tipo de dato solicitado";
             }
 
-            if ((!int.TryParse(inputCant.Text, out _) || !(double.TryParse(mediaInput.Text, out _) || int.TryParse(mediaInput.Text, out _)) || !(double.TryParse(desviaInput.Text, out _) || int.TryParse(desviaInput.Text, out _))) && !empty)
+            if ((!int.TryParse(inputCant.Texts, out _) || !(double.TryParse(mediaInput.Texts, out _) || int.TryParse(mediaInput.Texts, out _)) || !(double.TryParse(desviaInput.Texts, out _) || int.TryParse(desviaInput.Texts, out _))) && !empty)
             {
                 validations = true;
                 error = "Debe asegurarse que los datos sean todos del tipo solicitado";
@@ -160,15 +160,15 @@ namespace GeneradorAleatorio.Pantallas
             {
                 var numeros =
                method == 1 ?
-        (new Box_Muller()).GenerateBoxMuller(float.Parse(mediaInput.Text), float.Parse(desviaInput.Text), Int32.Parse(inputCant.Text)) :
-        (new Convolucion()).GenerateConvolution(float.Parse(mediaInput.Text), float.Parse(desviaInput.Text), Int32.Parse(inputCant.Text));
+        (new Box_Muller()).GenerateBoxMuller(float.Parse(mediaInput.Texts), float.Parse(desviaInput.Texts), Int32.Parse(inputCant.Texts)) :
+        (new Convolucion()).GenerateConvolution(float.Parse(mediaInput.Texts), float.Parse(desviaInput.Texts), Int32.Parse(inputCant.Texts));
 
                 // Seteo variables globales en Program para no tener que andar mandando de archivo en archivo mi media y desviacion, ademas de que si le mando al gestor
                 // la desviacion le rompo el codigo a los que hicieron los otros metodos
-                Program.deviation = float.Parse(desviaInput.Text);
-                Program.mediaN = float.Parse(mediaInput.Text);
+                Program.deviation = float.Parse(desviaInput.Texts);
+                Program.mediaN = float.Parse(mediaInput.Texts);
 
-                gestorDeCalculos = new GestorDeCalculos(numeros, 2, double.Parse(mediaInput.Text));
+                gestorDeCalculos = new GestorDeCalculos(numeros, 2, double.Parse(mediaInput.Texts));
             }
 
        ;
