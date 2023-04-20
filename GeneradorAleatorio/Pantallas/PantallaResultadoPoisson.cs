@@ -41,13 +41,12 @@ namespace GeneradorAleatorio.Pantallas
             }
         }
 
-
-        public void MostrarPuntos(double[,] matriz,Chart chart1)
+        private void PantallaResultadoPoisson_Load(object sender, EventArgs e)
         {
-            
-            
-                chart1.Series.Clear();
-                chart1.Series.Add("Serie1");
+            var chart1 = Histograma1;
+            var matriz = frecuencia0;
+            chart1.Series.Clear();
+            chart1.Series.Add("Serie1");
             chart1.ChartAreas[0].AxisX.Interval = 1; // Espacio entre las etiquetas del eje X
             chart1.ChartAreas[0].AxisX.LabelStyle.Angle = 0; // Ángulo de las etiquetas del eje X
             chart1.ChartAreas[0].AxisX.MajorGrid.Enabled = false; // Ocultar las líneas de la cuadrícula principal del eje X
@@ -55,7 +54,7 @@ namespace GeneradorAleatorio.Pantallas
 
 
             for (int i = 0; i < matriz.GetLength(0); i++)
-                {
+            {
                 double x = Double.Parse(matriz[i, 0].ToString());
                 double y = matriz[i, 2];
                 chart1.Series["Serie1"].Points.Add(y);
@@ -66,55 +65,48 @@ namespace GeneradorAleatorio.Pantallas
 
 
             }
-            
-        }
+
+            //Envía a la pantalla los valores calculados y tabulados de ks o chi
+            lblValorCalculado.Text = valorCalc.ToString();
 
 
 
 
-
-
-        private void PantallaResultadoPoisson_Load(object sender, EventArgs e)
-        {
-
-            MostrarPuntos(frecuencia0, Histograma1);
-           
-
-           
-                //Se fija el valor correspondiente en la tabla chi-cuadrado con un alfa=5%
-                if (gradosL <= 50)
+            //Se fija el valor correspondiente en la tabla chi-cuadrado con un alfa=5%
+            if (gradosL <= 50)
+            {
+                if (gradosL <= 0)
                 {
-                    if (gradosL <= 0)
-                    {
-                        MessageBox.Show("No es posible calcular. Por favor intente otro valor de intervalo");
-                        this.Close();
-                    }
-                    else
-                    {
-                        lblValorTabulado.Text = valoresTabuladosChi[gradosL - 1].ToString();
-                        try
-                        {
-                            if (Double.Parse(lblValorCalculado.Text) <= Double.Parse(lblValorTabulado.Text))
-                            {
-                                lblAceptacion.Text = "Se ACEPTA la hipótesis nula según prueba de Chi-Cuadrado";
-                            }
-                            else
-                            {
-                                lblAceptacion.Text = "No se acepta la hipótesis nula según prueba de Chi-Cuadrado";
-                            }
-                        }
-                        catch
-                        {
-
-                        }
-                    }
+                    MessageBox.Show("No es posible calcular. Por favor intente otro valor de intervalo");
+                    this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("No es posible calcular. Por favor intente otro valor de tamaño de muestra");
-                    this.Close();
+                    lblValorTabulado.Text = valoresTabuladosChi[gradosL - 1].ToString();
+                    try
+                    {
+                        if (Double.Parse(lblValorCalculado.Text) <= Double.Parse(lblValorTabulado.Text))
+                        {
+                            lblAceptacion.Text = "Se ACEPTA la hipótesis nula según prueba de Chi-Cuadrado";
+                        }
+                        else
+                        {
+                            lblAceptacion.Text = "No se acepta la hipótesis nula según prueba de Chi-Cuadrado";
+                        }
+                    }
+                    catch
+                    {
+
+                    }
                 }
+            }
+            else
+            {
+                MessageBox.Show("No es posible calcular. Por favor intente otro valor de tamaño de muestra");
+                this.Close();
+            }
 
         }
     }
 }
+
