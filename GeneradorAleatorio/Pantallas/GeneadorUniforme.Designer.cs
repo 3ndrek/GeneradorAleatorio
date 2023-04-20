@@ -122,7 +122,7 @@
             this.LimSup.BorderFocusColor = System.Drawing.Color.HotPink;
             this.LimSup.BorderSize = 2;
             this.LimSup.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LimSup.ForeColor = System.Drawing.Color.Black;
+            this.LimSup.ForeColor = System.Drawing.Color.White;
             this.LimSup.Location = new System.Drawing.Point(647, 177);
             this.LimSup.Margin = new System.Windows.Forms.Padding(4);
             this.LimSup.Multiline = false;
@@ -141,7 +141,7 @@
             this.LimInf.BorderFocusColor = System.Drawing.Color.HotPink;
             this.LimInf.BorderSize = 2;
             this.LimInf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LimInf.ForeColor = System.Drawing.Color.Black;
+            this.LimInf.ForeColor = System.Drawing.Color.White;
             this.LimInf.Location = new System.Drawing.Point(646, 303);
             this.LimInf.Margin = new System.Windows.Forms.Padding(4);
             this.LimInf.Multiline = false;
@@ -160,7 +160,7 @@
             this.CantNum.BorderFocusColor = System.Drawing.Color.HotPink;
             this.CantNum.BorderSize = 2;
             this.CantNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CantNum.ForeColor = System.Drawing.Color.Black;
+            this.CantNum.ForeColor = System.Drawing.Color.White;
             this.CantNum.Location = new System.Drawing.Point(646, 425);
             this.CantNum.Margin = new System.Windows.Forms.Padding(4);
             this.CantNum.Multiline = false;

@@ -159,7 +159,7 @@
             this.mediaInput.BorderFocusColor = System.Drawing.Color.HotPink;
             this.mediaInput.BorderSize = 2;
             this.mediaInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mediaInput.ForeColor = System.Drawing.Color.Black;
+            this.mediaInput.ForeColor = System.Drawing.Color.White;
             this.mediaInput.Location = new System.Drawing.Point(642, 282);
             this.mediaInput.Margin = new System.Windows.Forms.Padding(4);
             this.mediaInput.Multiline = false;
@@ -179,7 +179,7 @@
             this.desviaInput.BorderFocusColor = System.Drawing.Color.HotPink;
             this.desviaInput.BorderSize = 2;
             this.desviaInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.desviaInput.ForeColor = System.Drawing.Color.Black;
+            this.desviaInput.ForeColor = System.Drawing.Color.White;
             this.desviaInput.Location = new System.Drawing.Point(642, 356);
             this.desviaInput.Margin = new System.Windows.Forms.Padding(4);
             this.desviaInput.Multiline = false;
@@ -199,7 +199,7 @@
             this.inputCant.BorderFocusColor = System.Drawing.Color.HotPink;
             this.inputCant.BorderSize = 2;
             this.inputCant.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inputCant.ForeColor = System.Drawing.Color.Black;
+            this.inputCant.ForeColor = System.Drawing.Color.White;
             this.inputCant.Location = new System.Drawing.Point(642, 435);
             this.inputCant.Margin = new System.Windows.Forms.Padding(4);
             this.inputCant.Multiline = false;

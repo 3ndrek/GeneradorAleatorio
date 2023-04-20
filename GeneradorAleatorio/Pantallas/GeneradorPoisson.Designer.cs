@@ -105,7 +105,7 @@
             this.txtLambda.BorderFocusColor = System.Drawing.Color.HotPink;
             this.txtLambda.BorderSize = 2;
             this.txtLambda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLambda.ForeColor = System.Drawing.Color.Black;
+            this.txtLambda.ForeColor = System.Drawing.Color.White;
             this.txtLambda.Location = new System.Drawing.Point(646, 202);
             this.txtLambda.Margin = new System.Windows.Forms.Padding(4);
             this.txtLambda.Multiline = false;
@@ -124,7 +124,7 @@
             this.txtMuestra.BorderFocusColor = System.Drawing.Color.HotPink;
             this.txtMuestra.BorderSize = 2;
             this.txtMuestra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMuestra.ForeColor = System.Drawing.Color.Black;
+            this.txtMuestra.ForeColor = System.Drawing.Color.White;
             this.txtMuestra.Location = new System.Drawing.Point(646, 307);
             this.txtMuestra.Margin = new System.Windows.Forms.Padding(4);
             this.txtMuestra.Multiline = false;

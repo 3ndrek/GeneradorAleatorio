@@ -82,7 +82,7 @@
             this.TxtIntervalos.BorderFocusColor = System.Drawing.Color.HotPink;
             this.TxtIntervalos.BorderSize = 2;
             this.TxtIntervalos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtIntervalos.ForeColor = System.Drawing.Color.Black;
+            this.TxtIntervalos.ForeColor = System.Drawing.Color.White;
             this.TxtIntervalos.Location = new System.Drawing.Point(535, 125);
             this.TxtIntervalos.Margin = new System.Windows.Forms.Padding(4);
             this.TxtIntervalos.Multiline = false;

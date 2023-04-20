@@ -105,7 +105,7 @@
             this.txtMedia.BorderFocusColor = System.Drawing.Color.HotPink;
             this.txtMedia.BorderSize = 2;
             this.txtMedia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMedia.ForeColor = System.Drawing.Color.Black;
+            this.txtMedia.ForeColor = System.Drawing.Color.White;
             this.txtMedia.Location = new System.Drawing.Point(644, 183);
             this.txtMedia.Margin = new System.Windows.Forms.Padding(4);
             this.txtMedia.Multiline = false;
@@ -124,7 +124,7 @@
             this.txtCantValores.BorderFocusColor = System.Drawing.Color.HotPink;
             this.txtCantValores.BorderSize = 2;
             this.txtCantValores.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCantValores.ForeColor = System.Drawing.Color.Black;
+            this.txtCantValores.ForeColor = System.Drawing.Color.White;
             this.txtCantValores.Location = new System.Drawing.Point(644, 295);
             this.txtCantValores.Margin = new System.Windows.Forms.Padding(4);
             this.txtCantValores.Multiline = false;
