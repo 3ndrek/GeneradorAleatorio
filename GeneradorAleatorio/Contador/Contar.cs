@@ -88,7 +88,7 @@ namespace GeneradorAleatorio.Contador
         }
 
         // este contador es para uniforme nomás, no hace falta que los usen, no utiliza los intervalos del arreglo del número sino que usa fijos a-b
-        public double[,] ContarEntreIntervalosParaUniforme(List<Double> numeros, int intervalos, int min, int max)
+        public double[,] ContarEntreIntervalosParaUniforme(List<Double> numeros, int intervalos, Double min, Double max)
         {
             double minimo = min;
             double maximo = max;

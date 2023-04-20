@@ -37,13 +37,11 @@ namespace GeneradorAleatorio.Pantallas
         {
             var numeros = generarNumeros();
 
-
-
             // Se crea el generador de cálculos 
             gestorDeCalculos = new GestorDeCalculos(numeros,1,0); // el número que aparece es el modo, sirve para diferenciar en el cálculo de chi 
 
-            int Superior = Int32.Parse(LimSup.Text);
-            int Inferior = Int32.Parse(LimInf.Text);
+            Double Superior = Double.Parse(LimSup.Text);
+            Double Inferior = Double.Parse(LimInf.Text);
             gestorDeCalculos.SetIntervalos(Superior,Inferior);
         }
 
@@ -54,9 +52,9 @@ namespace GeneradorAleatorio.Pantallas
             // genero un listado para almacenar las variables 
             List<double> numeros = new List<double>();
             // obtengo los límites inferiores y superiores y la cantidad de n a generar 
-            double Superior = Int32.Parse(LimSup.Text);
-            double Inferior = Int32.Parse(LimInf.Text);
-            double cantidad = Int32.Parse(CantNum.Text);
+            double Superior = Double.Parse(LimSup.Text);
+            double Inferior = Double.Parse(LimInf.Text);
+            double cantidad = Double.Parse(CantNum.Text);
 
             // control del while
             int Contrl = 0;

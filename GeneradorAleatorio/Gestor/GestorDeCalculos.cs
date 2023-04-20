@@ -22,8 +22,8 @@ namespace GeneradorAleatorio.Gestor
 
 
         //solo para uniforme 
-        private int limInf;
-        private int limSup;
+        private Double limInf;
+        private Double limSup;
 
 
         // solución para pasar la matriz contada a la pantalla 
@@ -71,7 +71,7 @@ namespace GeneradorAleatorio.Gestor
 
 
         // esto es solo para la uniforme, no creo que les haga falta setear los intervalos en sí 
-        public void SetIntervalos(int sup, int inf)
+        public void SetIntervalos(Double sup,Double inf)
         {
             limSup = sup;
             limInf = inf;
