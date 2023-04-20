@@ -64,6 +64,7 @@ namespace GeneradorAleatorio.Pantallas
 
                 datos.Add(x);
             }
+            datos.Sort();
 
             return datos;
         }

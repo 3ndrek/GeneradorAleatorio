@@ -41,7 +41,7 @@ namespace GeneradorAleatorio.Gestor
 
 
             // carga la pantalla 
-            PantallaResultados pantallaResultados = new PantallaResultados(NumerosGenerados, this);
+            PantallaResultados pantallaResultados = new PantallaResultados(NumerosGenerados, this, modo);
 
 
             pantallaResultados.Show();
@@ -56,7 +56,15 @@ namespace GeneradorAleatorio.Gestor
 
             var prueba = PasaPrueba(NumerosGenerados, modoSeleccionado); // devuelve el valor de chi
 
-            generarPantallaHistograma(contadas, prueba, NumerosGenerados.Count());
+            if(modoSeleccionado == 4)
+            {
+                generarPantallaHistogramaPoisson(contadas, prueba, NumerosGenerados.Count());
+            }
+            else
+            {
+                generarPantallaHistograma(contadas, prueba, NumerosGenerados.Count());
+            }
+            
 
         }
 
@@ -274,6 +282,12 @@ namespace GeneradorAleatorio.Gestor
         public void generarPantallaHistograma(double[,] freqEsperada, double valorCalculado, int tamaño)
         {
             var pant = new PantallaHistogramaChi(freqEsperada, valorCalculado, tamaño, gradosLibertad);
+            pant.ShowDialog();
+        }
+
+        public void generarPantallaHistogramaPoisson(double[,] freqEsperada, double valorCalculado, int tamaño)
+        {
+            var pant = new PantallaResultadoPoisson(freqEsperada, valorCalculado, tamaño, gradosLibertad);
             pant.ShowDialog();
         }
 

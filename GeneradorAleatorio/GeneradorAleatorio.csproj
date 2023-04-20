@@ -102,6 +102,12 @@
     <Compile Include="Pantallas\PantallaHistogramaChi.Designer.cs">
       <DependentUpon>PantallaHistogramaChi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pantallas\PantallaResultadoPoisson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\PantallaResultadoPoisson.Designer.cs">
+      <DependentUpon>PantallaResultadoPoisson.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pantallas\PantallaResultados.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\PantallaHistogramaChi.resx">
       <DependentUpon>PantallaHistogramaChi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\PantallaResultadoPoisson.resx">
+      <DependentUpon>PantallaResultadoPoisson.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\PantallaResultados.resx">
       <DependentUpon>PantallaResultados.cs</DependentUpon>

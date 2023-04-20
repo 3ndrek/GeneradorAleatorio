@@ -95,7 +95,7 @@ namespace GeneradorAleatorio.Pantallas
             Histograma1.Series["Frecuencia Observada"].BorderWidth = 6 ;
             Histograma1.ChartAreas[0].AxisX.Interval = Math.Truncate((intervalosSuperiores[1] - intervalosInferiores[1])*10000)/10000;
             Histograma1.ChartAreas[0].AxisX.Minimum = Math.Truncate(intervalosInferiores[0]*10000)/10000;
-            //Histograma1.ChartAreas[0].AxisX.Maximum = intervalosSuperiores[intervalosSuperiores.Length - 1];
+
             Histograma1.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.LightGray;
             Histograma1.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.LightGray;
 

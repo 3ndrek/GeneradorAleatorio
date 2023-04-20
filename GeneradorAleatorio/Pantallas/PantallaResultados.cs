@@ -17,10 +17,13 @@ namespace GeneradorAleatorio.Pantallas
         private List<Double> numerosRandom;
 
         private GestorDeCalculos gestor;
-        public PantallaResultados(List<Double> numeros, GestorDeCalculos gestor1)
+
+        private int modoSelec;
+        public PantallaResultados(List<Double> numeros, GestorDeCalculos gestor1, int modo)
         {
             InitializeComponent();
             this.numerosRandom = numeros;
+            modoSelec = modo;
 
             gestor = gestor1;
 
@@ -29,6 +32,12 @@ namespace GeneradorAleatorio.Pantallas
 
         private void PantallaResultados_Load(object sender, EventArgs e)
         {
+            if(modoSelec == 4)
+            {
+                TxtIntervalos.Visible = false;
+                label1.Visible = false;
+            }
+
 
             DvgArreglo.Columns.Add("Columna2", "Valor");
 
@@ -41,22 +50,40 @@ namespace GeneradorAleatorio.Pantallas
 
         private void BtnGenerar_Click(object sender, EventArgs e)
         {
-            try
+            if(modoSelec != 4)
             {
-                if(TxtIntervalos.Text != "")
+                try
                 {
-                    int inter = Int32.Parse(TxtIntervalos.Text);
-                    gestor.asignarIntervalos(inter);
+                    if (TxtIntervalos.Text != "")
+                    {
+                        int inter = Int32.Parse(TxtIntervalos.Text);
+                        gestor.asignarIntervalos(inter);
+                    }
+
                 }
-              
+                catch
+                {
+                    MessageBox.Show("Debe ingresar un valor entero positivo");
+                }
             }
-            catch
+            else
             {
-                MessageBox.Show("Debe ingresar un valor entero positivo");
+                try
+                {
+                    if (TxtIntervalos.Text == "")
+                    {
+                        gestor.asignarIntervalos(1);
+                    }
+
+                }
+                catch
+                {
+                    
+                }
             }
+            
 
         }
 
-        // estaría para desde acá generar un archivo csv, o desde acá o desde la de chi 
     }
 }
