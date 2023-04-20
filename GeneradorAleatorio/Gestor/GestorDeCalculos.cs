@@ -262,7 +262,7 @@ namespace GeneradorAleatorio.Gestor
 
                             double prob = Math.Exp(-Plambda) * Math.Pow(Plambda, k) / Factorial(k);
 
-                            matrizCompleta[i, j] = prob * (NumerosGenerados.Count);
+                            matrizCompleta[i, j] = Math.Round(prob * (NumerosGenerados.Count));
                         }
                     }
                 }
@@ -299,13 +299,13 @@ namespace GeneradorAleatorio.Gestor
 
             Contar contador = new Contar();
 
-            if (n >= 10 && n <= 30)
+            if (n >= 10 && n <= 30 && modoSeleccionado != 4)
             {
                 valorCalculado = contador.PruebaKS(matrizCompleta, NumerosGenerados.Count());
                 //Determina el k
                 gradosLibertad = matrizCompleta.GetLength(0);
             }
-            else if (n > 30)
+            else if (n > 30 || modoSeleccionado == 4)
             {
 
                 double[] chi = contador.PruebaChi(matrizCompleta);

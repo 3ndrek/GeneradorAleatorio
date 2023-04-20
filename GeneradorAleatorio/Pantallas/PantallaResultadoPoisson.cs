@@ -95,7 +95,7 @@ namespace GeneradorAleatorio.Pantallas
                 }
                 else
                 {
-                    System.Windows.Forms.MessageBox.Show("No es posible calcular. Por favor intente otro valor de intervalo");
+                    MessageBox.Show("No es posible calcular. Por favor intente otro valor de tamaño de muestra");
                     this.Close();
                 }
 
